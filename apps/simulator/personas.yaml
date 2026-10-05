@@ -1,0 +1,53 @@
+personas:
+  - key: marathon_runner
+    share: 0.30
+    categories:
+      { running.running_shoes.road_shoes: 0.5, running.running_apparel: 0.3, accessories.watches: 0.2 }
+    price: { mean: 120, sd: 30 }
+    session: { pages_mean: 7, add_to_cart_p: 0.18, checkout_p: 0.55, purchase_p: 0.8 }
+    return_rate: 0.4
+    register_p: 0.3
+    discount_p: 0.0
+    base_ctr: 0.08
+    tone_multipliers: { performance: 1.8, lifestyle: 0.8, value: 0.9, premium: 1.1 }
+  - key: weekend_hiker
+    share: 0.25
+    categories: { hiking.hiking_boots: 0.45, hiking.backpacks: 0.4, running.running_shoes.trail_shoes: 0.15 }
+    price: { mean: 150, sd: 40 }
+    session: { pages_mean: 6, add_to_cart_p: 0.15, checkout_p: 0.5, purchase_p: 0.75 }
+    return_rate: 0.4
+    register_p: 0.25
+    discount_p: 0.1
+    base_ctr: 0.08
+    tone_multipliers: { performance: 0.9, lifestyle: 1.8, value: 1.0, premium: 1.1 }
+  - key: bargain_hunter
+    share: 0.20
+    categories: { running.running_apparel: 0.5, hiking.backpacks: 0.25, accessories.nutrition: 0.25 }
+    price: { mean: 28, sd: 12 }
+    session: { pages_mean: 8, add_to_cart_p: 0.22, checkout_p: 0.5, purchase_p: 0.7 }
+    return_rate: 0.45
+    register_p: 0.2
+    discount_p: 0.8
+    base_ctr: 0.08
+    tone_multipliers: { performance: 0.8, lifestyle: 0.9, value: 2.2, premium: 0.6 }
+  - key: gift_buyer
+    share: 0.15
+    categories:
+      { accessories.watches: 0.45, hiking.hiking_boots: 0.3, running.running_shoes.road_shoes: 0.25 }
+    price: { mean: 320, sd: 80 }
+    session: { pages_mean: 5, add_to_cart_p: 0.2, checkout_p: 0.6, purchase_p: 0.85 }
+    return_rate: 0.35
+    register_p: 0.15
+    discount_p: 0.0
+    base_ctr: 0.08
+    tone_multipliers: { performance: 0.9, lifestyle: 1.0, value: 0.7, premium: 2.0 }
+  - key: window_shopper
+    share: 0.10
+    categories: { running: 0.5, hiking: 0.3, accessories: 0.2 }
+    price: { mean: 100, sd: 60 }
+    session: { pages_mean: 12, add_to_cart_p: 0.04, checkout_p: 0.1, purchase_p: 0.3 }
+    return_rate: 0.5
+    register_p: 0.05
+    discount_p: 0.1
+    base_ctr: 0.03
+    tone_multipliers: { performance: 1.1, lifestyle: 1.3, value: 1.0, premium: 1.0 }

@@ -1,0 +1,37 @@
+# Decision API CPU profile (node --cpu-prof), k6 decision-api.js RATE=100 DURATION=60s, smoke stack
+
+## Before (P(best) recomputed with 1000 Monte Carlo samples on every decision; full cosine with norms)
+file CPU.20261003.025231.44531.0.001.cpuprofile total 76.2s busy 33.7s
+125.9%  (idle) :-1
+8.5%  cosine personalization/dist/index.js:985
+7.1%  sampleGamma personalization/dist/index.js:59
+5.6%  (anon) personalization/dist/index.js:18
+4.5%  standardNormal personalization/dist/index.js:38
+3.6%  (program) :-1
+3.2%  writeUtf8String :-1
+2.8%  (garbage collector) :-1
+2.1%  probabilityBest personalization/dist/index.js:139
+1.9%  writev :-1
+1.3%  rows api/dist/chunk-SQ7ZRWKP.js:7146
+1.3%  readFileUtf8 :-1
+1.2%  parseVector personalization/dist/index.js:1061
+1.2%  writeBuffer :-1
+1.2%  get node:internal/modules/package_json_reader:78
+
+## After (P(best) cached per campaign+segment for 5 s; dot product on unit vectors)
+file CPU.20261003.025445.45675.0.001.cpuprofile total 77.8s busy 17.4s
+346.6%  (idle) :-1
+9.9%  dot personalization/dist/index.js:1000
+4.2%  (program) :-1
+3.7%  (garbage collector) :-1
+2.7%  writeUtf8String :-1
+2.5%  get node:internal/modules/package_json_reader:78
+2.0%  parseVector personalization/dist/index.js:1067
+1.8%  readFileUtf8 :-1
+1.5%  rows api/dist/chunk-5DZRXFOD.js:7146
+1.4%  writeBuffer :-1
+1.4%  writev :-1
+1.3%  runMicrotasks :-1
+1.2%  record api/dist/chunk-5DZRXFOD.js:7792
+1.1%  randomFillSync node:internal/crypto/random:119
+0.9%  internalModuleStat :-1

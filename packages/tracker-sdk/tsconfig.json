@@ -1,0 +1,5 @@
+{
+  "extends": "@cip/config/tsconfig.base.json",
+  "compilerOptions": { "lib": ["ES2022", "DOM"], "types": [], "noEmit": true },
+  "include": ["src", "test", "*.config.ts"]
+}

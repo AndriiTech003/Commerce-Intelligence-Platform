@@ -1,0 +1,10 @@
+export const CONFIG = Symbol('CONFIG');
+export const REDIS = Symbol('REDIS');
+export const CLICKHOUSE = Symbol('CLICKHOUSE');
+export const AMQP = Symbol('AMQP');
+export const PUBLISHER = Symbol('PUBLISHER');
+export const LOGGER = Symbol('LOGGER');
+export const MAILER = Symbol('MAILER');
+export const STORAGE = Symbol('STORAGE');
+export const KEYS = Symbol('KEYS');
+export const EMBEDDINGS = Symbol('EMBEDDINGS');

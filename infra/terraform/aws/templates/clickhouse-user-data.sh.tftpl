@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+apt-get update
+apt-get install -y apt-transport-https ca-certificates curl gnupg
+curl -fsSL https://packages.clickhouse.com/rpm/lts/repodata/repomd.xml.key | gpg --dearmor -o /usr/share/keyrings/clickhouse-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/clickhouse-keyring.gpg] https://packages.clickhouse.com/deb stable main" >/etc/apt/sources.list.d/clickhouse.list
+apt-get update
+DEBIAN_FRONTEND=noninteractive apt-get install -y clickhouse-server clickhouse-client
+cat >/etc/clickhouse-server/config.d/listen.xml <<XML
+<clickhouse>
+  <listen_host>0.0.0.0</listen_host>
+  <prometheus><endpoint>/metrics</endpoint><port>9363</port><metrics>true</metrics><events>true</events><asynchronous_metrics>true</asynchronous_metrics></prometheus>
+</clickhouse>
+XML
+cat >/etc/clickhouse-server/users.d/default-password.xml <<XML
+<clickhouse><users><default><password>${password}</password><networks><ip>::/0</ip></networks></default></users></clickhouse>
+XML
+systemctl enable --now clickhouse-server

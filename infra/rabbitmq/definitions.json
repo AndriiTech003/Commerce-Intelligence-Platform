@@ -1,0 +1,938 @@
+{
+  "rabbit_version": "4.1.0",
+  "exchanges": [
+    {
+      "name": "track",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "domain",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "retry",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "dlx",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "queues": [
+    {
+      "name": "q.analytics.ingest",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": 10,
+        "x-dead-letter-exchange": "dlx",
+        "x-dead-letter-routing-key": "analytics.ingest"
+      }
+    },
+    {
+      "name": "q.analytics.ingest.retry.5s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 5000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.analytics.ingest"
+      }
+    },
+    {
+      "name": "q.analytics.ingest.retry.30s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 30000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.analytics.ingest"
+      }
+    },
+    {
+      "name": "q.analytics.ingest.retry.5m",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 300000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.analytics.ingest"
+      }
+    },
+    {
+      "name": "q.analytics.ingest.dlq",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": -1
+      }
+    },
+    {
+      "name": "q.realtime.counters",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": 10,
+        "x-dead-letter-exchange": "dlx",
+        "x-dead-letter-routing-key": "realtime.counters"
+      }
+    },
+    {
+      "name": "q.realtime.counters.retry.5s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 5000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.realtime.counters"
+      }
+    },
+    {
+      "name": "q.realtime.counters.retry.30s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 30000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.realtime.counters"
+      }
+    },
+    {
+      "name": "q.realtime.counters.retry.5m",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 300000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.realtime.counters"
+      }
+    },
+    {
+      "name": "q.realtime.counters.dlq",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": -1
+      }
+    },
+    {
+      "name": "q.profile.update",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": 10,
+        "x-dead-letter-exchange": "dlx",
+        "x-dead-letter-routing-key": "profile.update"
+      }
+    },
+    {
+      "name": "q.profile.update.retry.5s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 5000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.profile.update"
+      }
+    },
+    {
+      "name": "q.profile.update.retry.30s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 30000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.profile.update"
+      }
+    },
+    {
+      "name": "q.profile.update.retry.5m",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 300000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.profile.update"
+      }
+    },
+    {
+      "name": "q.profile.update.dlq",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": -1
+      }
+    },
+    {
+      "name": "q.bandit.feedback",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": 10,
+        "x-dead-letter-exchange": "dlx",
+        "x-dead-letter-routing-key": "bandit.feedback"
+      }
+    },
+    {
+      "name": "q.bandit.feedback.retry.5s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 5000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.bandit.feedback"
+      }
+    },
+    {
+      "name": "q.bandit.feedback.retry.30s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 30000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.bandit.feedback"
+      }
+    },
+    {
+      "name": "q.bandit.feedback.retry.5m",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 300000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.bandit.feedback"
+      }
+    },
+    {
+      "name": "q.bandit.feedback.dlq",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": -1
+      }
+    },
+    {
+      "name": "q.notifications",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": 10,
+        "x-dead-letter-exchange": "dlx",
+        "x-dead-letter-routing-key": "notifications"
+      }
+    },
+    {
+      "name": "q.notifications.retry.5s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 5000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.notifications"
+      }
+    },
+    {
+      "name": "q.notifications.retry.30s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 30000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.notifications"
+      }
+    },
+    {
+      "name": "q.notifications.retry.5m",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 300000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.notifications"
+      }
+    },
+    {
+      "name": "q.notifications.dlq",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": -1
+      }
+    },
+    {
+      "name": "q.catalog.embeddings",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": 10,
+        "x-dead-letter-exchange": "dlx",
+        "x-dead-letter-routing-key": "catalog.embeddings"
+      }
+    },
+    {
+      "name": "q.catalog.embeddings.retry.5s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 5000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.catalog.embeddings"
+      }
+    },
+    {
+      "name": "q.catalog.embeddings.retry.30s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 30000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.catalog.embeddings"
+      }
+    },
+    {
+      "name": "q.catalog.embeddings.retry.5m",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 300000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.catalog.embeddings"
+      }
+    },
+    {
+      "name": "q.catalog.embeddings.dlq",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": -1
+      }
+    },
+    {
+      "name": "q.reco.cooccurrence",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": 10,
+        "x-dead-letter-exchange": "dlx",
+        "x-dead-letter-routing-key": "reco.cooccurrence"
+      }
+    },
+    {
+      "name": "q.reco.cooccurrence.retry.5s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 5000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.reco.cooccurrence"
+      }
+    },
+    {
+      "name": "q.reco.cooccurrence.retry.30s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 30000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.reco.cooccurrence"
+      }
+    },
+    {
+      "name": "q.reco.cooccurrence.retry.5m",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 300000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.reco.cooccurrence"
+      }
+    },
+    {
+      "name": "q.reco.cooccurrence.dlq",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": -1
+      }
+    },
+    {
+      "name": "q.decisions.log",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": 10,
+        "x-dead-letter-exchange": "dlx",
+        "x-dead-letter-routing-key": "decisions.log"
+      }
+    },
+    {
+      "name": "q.decisions.log.retry.5s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 5000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.decisions.log"
+      }
+    },
+    {
+      "name": "q.decisions.log.retry.30s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 30000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.decisions.log"
+      }
+    },
+    {
+      "name": "q.decisions.log.retry.5m",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 300000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.decisions.log"
+      }
+    },
+    {
+      "name": "q.decisions.log.dlq",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": -1
+      }
+    },
+    {
+      "name": "q.webhooks.outgoing",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": 10,
+        "x-dead-letter-exchange": "dlx",
+        "x-dead-letter-routing-key": "webhooks.outgoing"
+      }
+    },
+    {
+      "name": "q.webhooks.outgoing.retry.5s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 5000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.webhooks.outgoing"
+      }
+    },
+    {
+      "name": "q.webhooks.outgoing.retry.30s",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 30000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.webhooks.outgoing"
+      }
+    },
+    {
+      "name": "q.webhooks.outgoing.retry.5m",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-message-ttl": 300000,
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": "q.webhooks.outgoing"
+      }
+    },
+    {
+      "name": "q.webhooks.outgoing.dlq",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "quorum",
+        "x-delivery-limit": -1
+      }
+    }
+  ],
+  "bindings": [
+    {
+      "source": "track",
+      "destination": "q.analytics.ingest",
+      "destination_type": "queue",
+      "routing_key": "#",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.analytics.ingest",
+      "destination_type": "queue",
+      "routing_key": "order.#",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.analytics.ingest.retry.5s",
+      "destination_type": "queue",
+      "routing_key": "q.analytics.ingest.retry.5s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.analytics.ingest.retry.30s",
+      "destination_type": "queue",
+      "routing_key": "q.analytics.ingest.retry.30s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.analytics.ingest.retry.5m",
+      "destination_type": "queue",
+      "routing_key": "q.analytics.ingest.retry.5m",
+      "arguments": {}
+    },
+    {
+      "source": "dlx",
+      "destination": "q.analytics.ingest.dlq",
+      "destination_type": "queue",
+      "routing_key": "analytics.ingest",
+      "arguments": {}
+    },
+    {
+      "source": "track",
+      "destination": "q.realtime.counters",
+      "destination_type": "queue",
+      "routing_key": "#",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.realtime.counters",
+      "destination_type": "queue",
+      "routing_key": "order.paid",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.realtime.counters.retry.5s",
+      "destination_type": "queue",
+      "routing_key": "q.realtime.counters.retry.5s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.realtime.counters.retry.30s",
+      "destination_type": "queue",
+      "routing_key": "q.realtime.counters.retry.30s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.realtime.counters.retry.5m",
+      "destination_type": "queue",
+      "routing_key": "q.realtime.counters.retry.5m",
+      "arguments": {}
+    },
+    {
+      "source": "dlx",
+      "destination": "q.realtime.counters.dlq",
+      "destination_type": "queue",
+      "routing_key": "realtime.counters",
+      "arguments": {}
+    },
+    {
+      "source": "track",
+      "destination": "q.profile.update",
+      "destination_type": "queue",
+      "routing_key": "product_viewed",
+      "arguments": {}
+    },
+    {
+      "source": "track",
+      "destination": "q.profile.update",
+      "destination_type": "queue",
+      "routing_key": "cart_item_added",
+      "arguments": {}
+    },
+    {
+      "source": "track",
+      "destination": "q.profile.update",
+      "destination_type": "queue",
+      "routing_key": "cart_item_removed",
+      "arguments": {}
+    },
+    {
+      "source": "track",
+      "destination": "q.profile.update",
+      "destination_type": "queue",
+      "routing_key": "search_performed",
+      "arguments": {}
+    },
+    {
+      "source": "track",
+      "destination": "q.profile.update",
+      "destination_type": "queue",
+      "routing_key": "ad_clicked",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.profile.update",
+      "destination_type": "queue",
+      "routing_key": "order.placed",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.profile.update",
+      "destination_type": "queue",
+      "routing_key": "order.refunded",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.profile.update",
+      "destination_type": "queue",
+      "routing_key": "customer.identified",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.profile.update.retry.5s",
+      "destination_type": "queue",
+      "routing_key": "q.profile.update.retry.5s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.profile.update.retry.30s",
+      "destination_type": "queue",
+      "routing_key": "q.profile.update.retry.30s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.profile.update.retry.5m",
+      "destination_type": "queue",
+      "routing_key": "q.profile.update.retry.5m",
+      "arguments": {}
+    },
+    {
+      "source": "dlx",
+      "destination": "q.profile.update.dlq",
+      "destination_type": "queue",
+      "routing_key": "profile.update",
+      "arguments": {}
+    },
+    {
+      "source": "track",
+      "destination": "q.bandit.feedback",
+      "destination_type": "queue",
+      "routing_key": "ad_impression",
+      "arguments": {}
+    },
+    {
+      "source": "track",
+      "destination": "q.bandit.feedback",
+      "destination_type": "queue",
+      "routing_key": "ad_clicked",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.bandit.feedback",
+      "destination_type": "queue",
+      "routing_key": "order.placed",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.bandit.feedback",
+      "destination_type": "queue",
+      "routing_key": "creative.approved",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.bandit.feedback.retry.5s",
+      "destination_type": "queue",
+      "routing_key": "q.bandit.feedback.retry.5s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.bandit.feedback.retry.30s",
+      "destination_type": "queue",
+      "routing_key": "q.bandit.feedback.retry.30s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.bandit.feedback.retry.5m",
+      "destination_type": "queue",
+      "routing_key": "q.bandit.feedback.retry.5m",
+      "arguments": {}
+    },
+    {
+      "source": "dlx",
+      "destination": "q.bandit.feedback.dlq",
+      "destination_type": "queue",
+      "routing_key": "bandit.feedback",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.notifications",
+      "destination_type": "queue",
+      "routing_key": "order.*",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.notifications",
+      "destination_type": "queue",
+      "routing_key": "inventory.low_stock",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.notifications.retry.5s",
+      "destination_type": "queue",
+      "routing_key": "q.notifications.retry.5s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.notifications.retry.30s",
+      "destination_type": "queue",
+      "routing_key": "q.notifications.retry.30s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.notifications.retry.5m",
+      "destination_type": "queue",
+      "routing_key": "q.notifications.retry.5m",
+      "arguments": {}
+    },
+    {
+      "source": "dlx",
+      "destination": "q.notifications.dlq",
+      "destination_type": "queue",
+      "routing_key": "notifications",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.catalog.embeddings",
+      "destination_type": "queue",
+      "routing_key": "product.upserted",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.catalog.embeddings.retry.5s",
+      "destination_type": "queue",
+      "routing_key": "q.catalog.embeddings.retry.5s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.catalog.embeddings.retry.30s",
+      "destination_type": "queue",
+      "routing_key": "q.catalog.embeddings.retry.30s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.catalog.embeddings.retry.5m",
+      "destination_type": "queue",
+      "routing_key": "q.catalog.embeddings.retry.5m",
+      "arguments": {}
+    },
+    {
+      "source": "dlx",
+      "destination": "q.catalog.embeddings.dlq",
+      "destination_type": "queue",
+      "routing_key": "catalog.embeddings",
+      "arguments": {}
+    },
+    {
+      "source": "track",
+      "destination": "q.reco.cooccurrence",
+      "destination_type": "queue",
+      "routing_key": "product_viewed",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.reco.cooccurrence",
+      "destination_type": "queue",
+      "routing_key": "order.placed",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.reco.cooccurrence.retry.5s",
+      "destination_type": "queue",
+      "routing_key": "q.reco.cooccurrence.retry.5s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.reco.cooccurrence.retry.30s",
+      "destination_type": "queue",
+      "routing_key": "q.reco.cooccurrence.retry.30s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.reco.cooccurrence.retry.5m",
+      "destination_type": "queue",
+      "routing_key": "q.reco.cooccurrence.retry.5m",
+      "arguments": {}
+    },
+    {
+      "source": "dlx",
+      "destination": "q.reco.cooccurrence.dlq",
+      "destination_type": "queue",
+      "routing_key": "reco.cooccurrence",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.decisions.log",
+      "destination_type": "queue",
+      "routing_key": "decision.made",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.decisions.log.retry.5s",
+      "destination_type": "queue",
+      "routing_key": "q.decisions.log.retry.5s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.decisions.log.retry.30s",
+      "destination_type": "queue",
+      "routing_key": "q.decisions.log.retry.30s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.decisions.log.retry.5m",
+      "destination_type": "queue",
+      "routing_key": "q.decisions.log.retry.5m",
+      "arguments": {}
+    },
+    {
+      "source": "dlx",
+      "destination": "q.decisions.log.dlq",
+      "destination_type": "queue",
+      "routing_key": "decisions.log",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.webhooks.outgoing",
+      "destination_type": "queue",
+      "routing_key": "order.paid",
+      "arguments": {}
+    },
+    {
+      "source": "domain",
+      "destination": "q.webhooks.outgoing",
+      "destination_type": "queue",
+      "routing_key": "order.refunded",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.webhooks.outgoing.retry.5s",
+      "destination_type": "queue",
+      "routing_key": "q.webhooks.outgoing.retry.5s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.webhooks.outgoing.retry.30s",
+      "destination_type": "queue",
+      "routing_key": "q.webhooks.outgoing.retry.30s",
+      "arguments": {}
+    },
+    {
+      "source": "retry",
+      "destination": "q.webhooks.outgoing.retry.5m",
+      "destination_type": "queue",
+      "routing_key": "q.webhooks.outgoing.retry.5m",
+      "arguments": {}
+    },
+    {
+      "source": "dlx",
+      "destination": "q.webhooks.outgoing.dlq",
+      "destination_type": "queue",
+      "routing_key": "webhooks.outgoing",
+      "arguments": {}
+    }
+  ]
+}

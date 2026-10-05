@@ -1,0 +1,17 @@
+node_modules
+dist
+.next
+.turbo
+coverage
+*.tgz
+!vendor/*.tgz
+.env
+.env.local
+test-results
+playwright-report
+.smoke
+.observability
+next-env.d.ts
+*.tsbuildinfo
+infra/terraform/**/.terraform
+infra/terraform/**/*.tfstate*

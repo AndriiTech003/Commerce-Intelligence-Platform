@@ -1,0 +1,89 @@
+{
+  "scenario": "checkout-contention",
+  "finishedAt": "2026-10-05T01:51:01.811Z",
+  "durationSeconds": 60.157985000000004,
+  "requests": 218047,
+  "rps": 3624.5728642673125,
+  "latencyMs": {
+    "p50": 22.486,
+    "p90": 87.5025,
+    "p95": 96.271,
+    "p99": 401.06699999999995,
+    "max": 980.139
+  },
+  "errorRate": 0.5234696779283204,
+  "checks": {
+    "passes": 2766,
+    "fails": 0
+  },
+  "thresholds": {
+    "http_req_duration{scenario:buyers}": {
+      "p(95)<5000": true
+    },
+    "http_req_failed{scenario:buyers}": {
+      "rate<0.01": false
+    },
+    "orders_created_201": {
+      "count>0": true
+    },
+    "checkout_5xx": {
+      "count==0": true
+    }
+  },
+  "custom": {
+    "idempotent_replays": {
+      "count": 119,
+      "rate": 1.9781247659807755
+    },
+    "orders_created_201": {
+      "count": 2517,
+      "rate": 41.83983223507237
+    },
+    "cart_add_failed": {
+      "count": 212613,
+      "rate": 3534.244040919921
+    },
+    "checkout_5xx": {
+      "count": 0,
+      "rate": 0
+    },
+    "checkout_conflict_409": {
+      "count": 130,
+      "rate": 2.160976635105049
+    },
+    "checkout_duration": {
+      "p(95)": 609.8934999999999,
+      "p(99)": 689.9884399999999,
+      "count": 2647,
+      "avg": 461.3931473366066,
+      "min": 90.382,
+      "med": 461.506,
+      "max": 980.139,
+      "p(90)": 573.5456
+    },
+    "cart_conflict_409": {
+      "count": 98483,
+      "rate": 1637.0727842696194
+    }
+  },
+  "droppedIterations": 0,
+  "vus": 200,
+  "productPool": 20,
+  "ordersPerSecond": 41.84,
+  "checkoutAttempts": 2647,
+  "status": {
+    "201": 2517,
+    "409": 130,
+    "5xx": 0,
+    "other": 0,
+    "cartFailed": 212613,
+    "cart409": 98483
+  },
+  "conflictShare": 0.0491,
+  "checkoutLatencyMs": {
+    "p50": 461.506,
+    "p95": 609.8934999999999,
+    "p99": 689.9884399999999
+  },
+  "passed": false
+}

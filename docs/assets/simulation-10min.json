@@ -1,0 +1,79 @@
+{
+  "mode": "run",
+  "store": "runhub",
+  "elapsedSeconds": 607.06,
+  "sessionsPerSecond": 14.756366751227228,
+  "stats": {
+    "sessions": 8958,
+    "decisions": 10754,
+    "clicks": 1262,
+    "orders": 632,
+    "errors": 0,
+    "holdout": 984
+  },
+  "personas": {
+    "bargain_hunter": {
+      "sessions": 1746,
+      "segments": {
+        "_default": 77,
+        "runners": 110,
+        "price_sensitive": 1189,
+        "hikers": 11
+      },
+      "impressions": 2048,
+      "clicks": 305
+    },
+    "marathon_runner": {
+      "sessions": 2600,
+      "segments": {
+        "_default": 83,
+        "runners": 1744,
+        "premium_shoppers": 191,
+        "price_sensitive": 30
+      },
+      "impressions": 3174,
+      "clicks": 324
+    },
+    "weekend_hiker": {
+      "sessions": 2274,
+      "segments": {
+        "_default": 99,
+        "runners": 394,
+        "hikers": 1147,
+        "price_sensitive": 119,
+        "premium_shoppers": 1
+      },
+      "impressions": 2750,
+      "clicks": 358
+    },
+    "gift_buyer": {
+      "sessions": 1404,
+      "segments": {
+        "_default": 152,
+        "premium_shoppers": 616,
+        "runners": 204,
+        "hikers": 69
+      },
+      "impressions": 1700,
+      "clicks": 210
+    },
+    "window_shopper": {
+      "sessions": 934,
+      "segments": {
+        "_default": 14,
+        "price_sensitive": 266,
+        "runners": 440,
+        "hikers": 11
+      },
+      "impressions": 1082,
+      "clicks": 65
+    }
+  },
+  "regret": {
+    "01a0fcc6-d1b5-7205-b1cf-00323c091696": {
+      "thompson": 396.81649999997654,
+      "uniform": 607.0769999999796,
+      "decisions": 9770
+    }
+  }
+}

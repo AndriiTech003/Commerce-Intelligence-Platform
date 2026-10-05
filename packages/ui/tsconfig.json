@@ -1,0 +1,10 @@
+{
+  "extends": "@cip/config/tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "types": ["node"],
+    "noEmit": true
+  },
+  "include": ["src", "test", "*.config.ts"]
+}

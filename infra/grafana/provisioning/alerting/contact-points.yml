@@ -1,0 +1,18 @@
+apiVersion: 1
+contactPoints:
+  - orgId: 1
+    name: cip-mailpit
+    receivers:
+      - uid: cip-mailpit-email
+        type: email
+        settings:
+          addresses: alerts@cip.dev
+          singleEmail: true
+        disableResolveMessage: false
+policies:
+  - orgId: 1
+    receiver: cip-mailpit
+    group_by: ['grafana_folder', 'alertname']
+    group_wait: 10s
+    group_interval: 1m
+    repeat_interval: 4h

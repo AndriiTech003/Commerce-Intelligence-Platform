@@ -1,0 +1,73 @@
+{
+  "scenario": "pipeline-e2e",
+  "finishedAt": "2026-10-05T01:39:59.511Z",
+  "durationSeconds": 70.01973699999999,
+  "requests": 8979,
+  "rps": 128.2352717206007,
+  "latencyMs": {
+    "p50": 3.619,
+    "p90": 4.989,
+    "p95": 5.981199999999996,
+    "p99": 15.205879999999992,
+    "max": 432.669
+  },
+  "errorRate": 0,
+  "checks": {
+    "passes": 8977,
+    "fails": 0
+  },
+  "thresholds": {
+    "freshness_p95_seconds": {
+      "value<2": true
+    },
+    "http_req_failed{scenario:constant}": {
+      "rate<0.001": true
+    },
+    "http_req_duration{scenario:constant}": {
+      "p(95)<1000": true
+    }
+  },
+  "custom": {
+    "freshness_p99_seconds": {
+      "value": 0.4962805837524298,
+      "min": 0.4962805837524298,
+      "max": 0.4962805837524298
+    },
+    "events_accepted": {
+      "count": 179540,
+      "rate": 2564.1341669135372
+    },
+    "freshness_p95_seconds": {
+      "min": 0.4685831970627256,
+      "max": 0.4685831970627256,
+      "value": 0.4685831970627256
+    },
+    "freshness_observations": {
+      "value": 179540,
+      "min": 179540,
+      "max": 179540
+    },
+    "freshness_p50_seconds": {
+      "value": 0.20870188136444587,
+      "min": 0.20870188136444587,
+      "max": 0.20870188136444587
+    }
+  },
+  "droppedIterations": 23,
+  "queue": "q.analytics.ingest",
+  "targetEventsPerSecond": 3000,
+  "eventsAccepted": 179540,
+  "retries": 0,
+  "batchesLost": 0,
+  "eventsPerSecondAvg": 2991,
+  "freshnessSeconds": {
+    "p50": 0.20870188136444587,
+    "p95": 0.4685831970627256,
+    "p99": 0.4962805837524298,
+    "observations": 179540,
+    "p95FromPrometheus": null
+  },
+  "runId": "0a85abf0-b250-4cb9-8cb4-8a6f0005ff19",
+  "tenantId": "01a109af-f39c-7434-8058-bbd0b65c768a",
+  "passed": true
+}

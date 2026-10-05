@@ -1,0 +1,46 @@
+{
+  "name": "@ashamrai/cip-tracker",
+  "version": "0.1.0",
+  "description": "Tiny browser tracker for the Commerce Intelligence Platform collector: batching, sendBeacon, retries, consent.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "size": "size-limit"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "3 KB",
+      "gzip": true
+    }
+  ],
+  "devDependencies": {
+    "@cip/config": "workspace:*",
+    "@size-limit/preset-small-lib": "^14.1.0",
+    "size-limit": "^14.1.0",
+    "tsup": "^8.5.1",
+    "vitest": "5.0.3"
+  }
+}

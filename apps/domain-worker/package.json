@@ -1,0 +1,33 @@
+{
+  "name": "@cip/domain-worker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx watch src/main.ts",
+    "start": "node dist/main.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:integration": "vitest run -c vitest.integration.config.ts",
+    "reembed": "tsx src/reembed.ts"
+  },
+  "dependencies": {
+    "@cip/contracts": "workspace:*",
+    "@cip/messaging": "workspace:*",
+    "@cip/observability": "workspace:*",
+    "ioredis": "^5.11.1",
+    "nodemailer": "^8.0.0",
+    "pg": "^8.23.1",
+    "zod": "^4.6.5",
+    "@cip/personalization": "workspace:*"
+  },
+  "devDependencies": {
+    "@cip/config": "workspace:*",
+    "@types/nodemailer": "^7.0.0",
+    "@types/pg": "^8.23.1",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.15",
+    "vitest": "5.0.3"
+  }
+}

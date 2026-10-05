@@ -1,0 +1,658 @@
+{
+  "apiVersion": 1,
+  "groups": [
+    {
+      "orgId": 1,
+      "name": "cip-pipeline",
+      "folder": "Commerce Intelligence",
+      "interval": "20s",
+      "rules": [
+        {
+          "uid": "cip-dlq-not-empty",
+          "title": "DLQ has messages",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 600,
+                "to": 0
+              },
+              "datasourceUid": "prometheus",
+              "model": {
+                "refId": "A",
+                "expr": "sum by (vhost, queue) (rabbitmq_queue_messages{queue=~\"q\\\\..+\\\\.dlq\"})",
+                "instant": true,
+                "range": false,
+                "intervalMs": 15000,
+                "maxDataPoints": 43200
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "refId": "C",
+                "type": "threshold",
+                "expression": "A",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        0
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "OK",
+          "execErrState": "Error",
+          "for": "5m",
+          "labels": {
+            "severity": "warning",
+            "team": "cip"
+          },
+          "annotations": {
+            "summary": "Dead-letter queue {{ $labels.queue }} ({{ $labels.vhost }}) is not empty: replay from Platform admin → DLQ",
+            "dashboard": "http://127.0.0.1:4192/d/cip-event-pipeline"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "cip-freshness-p95",
+          "title": "Event freshness p95 above 10s",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 600,
+                "to": 0
+              },
+              "datasourceUid": "prometheus",
+              "model": {
+                "refId": "A",
+                "expr": "histogram_quantile(0.95, sum by (profile, queue, le) (rate(message_end_to_end_seconds_bucket[5m])))",
+                "instant": true,
+                "range": false,
+                "intervalMs": 15000,
+                "maxDataPoints": 43200
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "refId": "C",
+                "type": "threshold",
+                "expression": "A",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        10
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "OK",
+          "execErrState": "Error",
+          "for": "5m",
+          "labels": {
+            "severity": "warning",
+            "team": "cip"
+          },
+          "annotations": {
+            "summary": "p95 end-to-end freshness of {{ $labels.queue }} ({{ $labels.profile }}) is above 10 s",
+            "dashboard": "http://127.0.0.1:4192/d/cip-event-pipeline"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "cip-outbox-stale",
+          "title": "Outbox rows unpublished for more than 1 minute",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 600,
+                "to": 0
+              },
+              "datasourceUid": "prometheus",
+              "model": {
+                "refId": "A",
+                "expr": "max by (profile) (outbox_oldest_unpublished_seconds)",
+                "instant": true,
+                "range": false,
+                "intervalMs": 15000,
+                "maxDataPoints": 43200
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "refId": "C",
+                "type": "threshold",
+                "expression": "A",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        60
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "OK",
+          "execErrState": "Error",
+          "for": "1m",
+          "labels": {
+            "severity": "critical",
+            "team": "cip"
+          },
+          "annotations": {
+            "summary": "Outbox of {{ $labels.profile }} has rows older than 60 s (relay or broker down)",
+            "dashboard": "http://127.0.0.1:4192/d/cip-event-pipeline"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "cip-queue-backlog-growing",
+          "title": "Consumer lag: queue backlog growing",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 600,
+                "to": 0
+              },
+              "datasourceUid": "prometheus",
+              "model": {
+                "refId": "A",
+                "expr": "(sum by (vhost, queue) (rabbitmq_queue_messages{queue=~\"q\\\\.[a-z.]+\", queue!~\".*\\\\.(dlq|retry\\\\..+)\"}) > 500) and (sum by (vhost, queue) (deriv(rabbitmq_queue_messages{queue=~\"q\\\\.[a-z.]+\", queue!~\".*\\\\.(dlq|retry\\\\..+)\"}[2m])) > 0)",
+                "instant": true,
+                "range": false,
+                "intervalMs": 15000,
+                "maxDataPoints": 43200
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "refId": "C",
+                "type": "threshold",
+                "expression": "A",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        500
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "OK",
+          "execErrState": "Error",
+          "for": "1m",
+          "labels": {
+            "severity": "warning",
+            "team": "cip"
+          },
+          "annotations": {
+            "summary": "Backlog of {{ $labels.queue }} ({{ $labels.vhost }}) is above 500 and still growing",
+            "dashboard": "http://127.0.0.1:4192/d/cip-event-pipeline"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "cip-collector-buffering",
+          "title": "Collector buffering events (broker unavailable)",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 600,
+                "to": 0
+              },
+              "datasourceUid": "prometheus",
+              "model": {
+                "refId": "A",
+                "expr": "max by (profile) (collector_buffer_size)",
+                "instant": true,
+                "range": false,
+                "intervalMs": 15000,
+                "maxDataPoints": 43200
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "refId": "C",
+                "type": "threshold",
+                "expression": "A",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        0
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "OK",
+          "execErrState": "Error",
+          "for": "30s",
+          "labels": {
+            "severity": "warning",
+            "team": "cip"
+          },
+          "annotations": {
+            "summary": "Collector of {{ $labels.profile }} holds events in memory",
+            "dashboard": "http://127.0.0.1:4192/d/cip-event-pipeline"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "cip-rabbitmq-down",
+          "title": "RabbitMQ unreachable",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 600,
+                "to": 0
+              },
+              "datasourceUid": "prometheus",
+              "model": {
+                "refId": "A",
+                "expr": "max(rabbitmq_up)",
+                "instant": true,
+                "range": false,
+                "intervalMs": 15000,
+                "maxDataPoints": 43200
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "refId": "C",
+                "type": "threshold",
+                "expression": "A",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "lt",
+                      "params": [
+                        1
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "NoData",
+          "execErrState": "Error",
+          "for": "30s",
+          "labels": {
+            "severity": "critical",
+            "team": "cip"
+          },
+          "annotations": {
+            "summary": "RabbitMQ management API does not answer the exporter"
+          },
+          "isPaused": false
+        }
+      ]
+    },
+    {
+      "orgId": 1,
+      "name": "cip-services",
+      "folder": "Commerce Intelligence",
+      "interval": "20s",
+      "rules": [
+        {
+          "uid": "cip-http-5xx",
+          "title": "5xx rate above 1%",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 600,
+                "to": 0
+              },
+              "datasourceUid": "prometheus",
+              "model": {
+                "refId": "A",
+                "expr": "(sum by (profile, service) (rate(http_requests_total{status=~\"5..\"}[5m])) / sum by (profile, service) (rate(http_requests_total[5m]))) or (sum by (profile, service) (rate(collector_request_duration_seconds_count{status=~\"5..\"}[5m])) / sum by (profile, service) (rate(collector_request_duration_seconds_count[5m])))",
+                "instant": true,
+                "range": false,
+                "intervalMs": 15000,
+                "maxDataPoints": 43200
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "refId": "C",
+                "type": "threshold",
+                "expression": "A",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        0.01
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "OK",
+          "execErrState": "Error",
+          "for": "5m",
+          "labels": {
+            "severity": "critical",
+            "team": "cip"
+          },
+          "annotations": {
+            "summary": "{{ $labels.service }} ({{ $labels.profile }}) answers more than 1 % 5xx",
+            "dashboard": "http://127.0.0.1:4192/d/cip-system-overview"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "cip-checkout-server-errors",
+          "title": "Checkout server-side failures above 1%",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 600,
+                "to": 0
+              },
+              "datasourceUid": "prometheus",
+              "model": {
+                "refId": "A",
+                "expr": "sum by (profile) (rate(checkout_failures_total{reason=~\"error|SERVICE_UNAVAILABLE|CONFLICT\"}[5m])) / (sum by (profile) (rate(checkout_failures_total[5m])) + sum by (profile) (rate(orders_placed_total[5m])))",
+                "instant": true,
+                "range": false,
+                "intervalMs": 15000,
+                "maxDataPoints": 43200
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "refId": "C",
+                "type": "threshold",
+                "expression": "A",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        0.01
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "OK",
+          "execErrState": "Error",
+          "for": "5m",
+          "labels": {
+            "severity": "critical",
+            "team": "cip"
+          },
+          "annotations": {
+            "summary": "Checkout of {{ $labels.profile }} fails server-side for more than 1 % of attempts (stock conflicts excluded)",
+            "dashboard": "http://127.0.0.1:4192/d/cip-business"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "cip-decision-p95",
+          "title": "Decision API p95 above 50ms",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 600,
+                "to": 0
+              },
+              "datasourceUid": "prometheus",
+              "model": {
+                "refId": "A",
+                "expr": "histogram_quantile(0.95, sum by (profile, le) (rate(decision_latency_seconds_bucket[5m])))",
+                "instant": true,
+                "range": false,
+                "intervalMs": 15000,
+                "maxDataPoints": 43200
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "refId": "C",
+                "type": "threshold",
+                "expression": "A",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        0.05
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "OK",
+          "execErrState": "Error",
+          "for": "5m",
+          "labels": {
+            "severity": "warning",
+            "team": "cip"
+          },
+          "annotations": {
+            "summary": "Decision API p95 of {{ $labels.profile }} is above 50 ms",
+            "dashboard": "http://127.0.0.1:4192/d/cip-personalization"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "cip-service-down",
+          "title": "Service of a running stack is down",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 600,
+                "to": 0
+              },
+              "datasourceUid": "prometheus",
+              "model": {
+                "refId": "A",
+                "expr": "(up{job=~\"cip-.+\", service!~\"simulator|embeddings-server\"} == 0) and on (profile) (max by (profile) (up{job=~\"cip-.+\", service!~\"simulator|embeddings-server\"}) == 1)",
+                "instant": true,
+                "range": false,
+                "intervalMs": 15000,
+                "maxDataPoints": 43200
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "refId": "C",
+                "type": "threshold",
+                "expression": "A",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        -1
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "OK",
+          "execErrState": "Error",
+          "for": "30s",
+          "labels": {
+            "severity": "critical",
+            "team": "cip"
+          },
+          "annotations": {
+            "summary": "{{ $labels.service }} of the {{ $labels.profile }} stack does not answer /metrics",
+            "dashboard": "http://127.0.0.1:4192/d/cip-system-overview"
+          },
+          "isPaused": false
+        },
+        {
+          "uid": "cip-event-loop-lag",
+          "title": "Event loop lag p99 above 200ms",
+          "condition": "C",
+          "data": [
+            {
+              "refId": "A",
+              "relativeTimeRange": {
+                "from": 600,
+                "to": 0
+              },
+              "datasourceUid": "prometheus",
+              "model": {
+                "refId": "A",
+                "expr": "max by (profile, service) (nodejs_eventloop_lag_p99_seconds)",
+                "instant": true,
+                "range": false,
+                "intervalMs": 15000,
+                "maxDataPoints": 43200
+              }
+            },
+            {
+              "refId": "C",
+              "relativeTimeRange": {
+                "from": 0,
+                "to": 0
+              },
+              "datasourceUid": "__expr__",
+              "model": {
+                "refId": "C",
+                "type": "threshold",
+                "expression": "A",
+                "conditions": [
+                  {
+                    "evaluator": {
+                      "type": "gt",
+                      "params": [
+                        0.2
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "noDataState": "OK",
+          "execErrState": "Error",
+          "for": "2m",
+          "labels": {
+            "severity": "warning",
+            "team": "cip"
+          },
+          "annotations": {
+            "summary": "{{ $labels.service }} ({{ $labels.profile }}) event loop is blocked",
+            "dashboard": "http://127.0.0.1:4192/d/cip-system-overview"
+          },
+          "isPaused": false
+        }
+      ]
+    }
+  ]
+}

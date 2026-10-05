@@ -1,0 +1,5 @@
+{
+  "extends": "@cip/config/tsconfig.base.json",
+  "compilerOptions": { "types": ["node"], "noEmit": true },
+  "include": ["src", "test", "*.config.ts"]
+}

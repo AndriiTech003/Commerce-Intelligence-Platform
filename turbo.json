@@ -1,0 +1,44 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "agentGuidance": false,
+  "globalPassThroughEnv": [
+    "CI",
+    "TESTCONTAINERS",
+    "TEST_DATABASE_ADMIN_URL",
+    "TEST_REDIS_URL",
+    "TEST_RABBITMQ_URL",
+    "TEST_RABBITMQ_MANAGEMENT_URL",
+    "TEST_CLICKHOUSE_URL",
+    "TEST_S3_ENDPOINT",
+    "TEST_MAILPIT_URL",
+    "TEST_SMTP_PORT",
+    "RABBITMQ_STOP_CMD",
+    "RABBITMQ_START_CMD",
+    "DOCKER_HOST",
+    "NEXT_TELEMETRY_DISABLED"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"]
+    },
+    "test:integration": {
+      "dependsOn": ["^build"],
+      "cache": false
+    },
+    "size": {
+      "dependsOn": ["build"]
+    },
+    "dev": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

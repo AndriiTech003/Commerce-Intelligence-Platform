@@ -1,0 +1,28 @@
+{
+  "name": "@cip/api-client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "generate": "openapi-typescript openapi.json -o src/schema.d.ts && node ../../scripts/strip-comments.mjs src/schema.d.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.17.0"
+  },
+  "devDependencies": {
+    "@cip/config": "workspace:*",
+    "openapi-typescript": "^7.13.0",
+    "tsup": "^8.5.1",
+    "vitest": "5.0.3"
+  }
+}

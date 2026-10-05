@@ -1,0 +1,28 @@
+Prometheus http://127.0.0.1:4191
+  ok   ready
+       cip-dev    up  0: - | down 7: domain-worker, simulator, embeddings-server, api, collector, realtime-gateway, stream-worker
+       cip-e2e    up  0: - | down 6: api, collector, realtime-gateway, stream-worker, domain-worker, simulator
+       cip-smoke  up  0: - | down 6: simulator, api, collector, realtime-gateway, stream-worker, domain-worker
+       datastores up  1: datastores
+       prometheus up  1: prometheus
+       rabbitmq   up  1: rabbitmq
+  ok   3/22 targets up
+  warn no application targets are up (no dev/smoke/e2e stack running)
+  ok   2 rule groups, 10 recording + 11 alerting rules
+       Prometheus alerts firing: none
+Grafana http://127.0.0.1:4192
+  ok   health: version 13.2.3, database ok
+  datasources: Jaeger (jaeger, uid=jaeger, http://127.0.0.1:4193); Prometheus (prometheus, uid=prometheus, http://127.0.0.1:4191)
+  ok   datasource Prometheus: Successfully queried the Prometheus API.
+  ok   datasource Jaeger: Data source is working
+  ok   dashboard cip-system-overview "CIP · System overview" in folder "Commerce Intelligence": 36 panels, 43 queries parse
+  ok   dashboard cip-event-pipeline "CIP · Event pipeline" in folder "Commerce Intelligence": 30 panels, 41 queries parse
+  ok   dashboard cip-business "CIP · Business" in folder "Commerce Intelligence": 25 panels, 36 queries parse
+  ok   dashboard cip-personalization "CIP · Personalization" in folder "Commerce Intelligence": 32 panels, 36 queries parse
+  ok   11 Grafana-managed alert rules provisioned: DLQ has messages; Event freshness p95 above 10s; Outbox rows unpublished for more than 1 minute; Consumer lag: queue backlog growing; Collector buffering events (broker unavailable); RabbitMQ unreachable; 5xx rate above 1%; Decision API p95 above 50ms; Service of a running stack is down; Event loop lag p99 above 200ms; Checkout server-side failures above 1%
+  ok   alert evaluation: {"inactive":11}
+  ok   contact point cip-mailpit (Mailpit SMTP 127.0.0.1:1025) provisioned
+Jaeger http://127.0.0.1:4193
+  ok   query API up, services with traces: none yet
+
+verify-observability: PASS (0 failure(s), 1 warning(s))

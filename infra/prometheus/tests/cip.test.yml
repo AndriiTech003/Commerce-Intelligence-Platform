@@ -1,0 +1,88 @@
+rule_files:
+  - ../rules/cip.yml
+
+evaluation_interval: 15s
+
+tests:
+  - interval: 15s
+    input_series:
+      - series: 'rabbitmq_queue_messages{vhost="cip",queue="q.analytics.ingest.dlq"}'
+        values: '0 3x40'
+      - series: 'rabbitmq_queue_messages{vhost="cip",queue="q.realtime.counters"}'
+        values: '0+100x40'
+      - series: 'outbox_oldest_unpublished_seconds{profile="smoke",service="domain-worker"}'
+        values: '0+15x40'
+      - series: 'up{job="cip-smoke",profile="smoke",service="api"}'
+        values: '1x40'
+      - series: 'up{job="cip-smoke",profile="smoke",service="stream-worker"}'
+        values: '1 0x40'
+      - series: 'up{job="cip-e2e",profile="e2e",service="api"}'
+        values: '0x40'
+      - series: 'http_requests_total{profile="smoke",service="api",method="GET",route="/x",status="200"}'
+        values: '0+90x40'
+      - series: 'http_requests_total{profile="smoke",service="api",method="GET",route="/x",status="500"}'
+        values: '0+10x40'
+      - series: 'decision_latency_seconds_bucket{profile="smoke",service="api",placement="home_hero",le="0.05"}'
+        values: '0+1x40'
+      - series: 'decision_latency_seconds_bucket{profile="smoke",service="api",placement="home_hero",le="0.1"}'
+        values: '0+10x40'
+      - series: 'decision_latency_seconds_bucket{profile="smoke",service="api",placement="home_hero",le="+Inf"}'
+        values: '0+10x40'
+      - series: 'orders_placed_total{profile="smoke",service="api",currency="USD",attributed="no"}'
+        values: '0+90x40'
+      - series: 'checkout_failures_total{profile="smoke",service="api",reason="INSUFFICIENT_STOCK"}'
+        values: '0+5x40'
+      - series: 'checkout_failures_total{profile="smoke",service="api",reason="error"}'
+        values: '0+5x40'
+      - series: 'collector_events_by_type_total{profile="smoke",service="collector",event_type="product_viewed"}'
+        values: '0+900x40'
+    promql_expr_test:
+      - expr: cip:conversion_view_to_order:ratio15m
+        eval_time: 9m
+        exp_samples:
+          - labels: 'cip:conversion_view_to_order:ratio15m{profile="smoke"}'
+            value: 0.1
+    alert_rule_test:
+      - eval_time: 6m
+        alertname: CipDlqNotEmpty
+        exp_alerts:
+          - exp_labels: { severity: warning, vhost: cip, queue: q.analytics.ingest.dlq }
+            exp_annotations:
+              summary: 'DLQ q.analytics.ingest.dlq in vhost cip has 3 messages'
+              runbook: Inspect and replay from Platform admin → DLQ (POST /v1/platform/dlq/:queue/replay)
+      - eval_time: 4m
+        alertname: CipQueueBacklogGrowing
+        exp_alerts:
+          - exp_labels: { severity: warning, vhost: cip, queue: q.realtime.counters }
+            exp_annotations:
+              summary: 'Consumer lag: q.realtime.counters (cip) backlog 1600 and growing'
+      - eval_time: 3m
+        alertname: CipOutboxStale
+        exp_alerts:
+          - exp_labels: { severity: critical, profile: smoke }
+            exp_annotations:
+              summary: 'Outbox rows unpublished for 3m 0s (smoke)'
+      - eval_time: 2m
+        alertname: CipServiceDown
+        exp_alerts:
+          - exp_labels: { severity: critical, job: cip-smoke, profile: smoke, service: stream-worker }
+            exp_annotations:
+              summary: 'stream-worker of the smoke stack is down'
+      - eval_time: 9m
+        alertname: CipCheckoutServerErrors
+        exp_alerts:
+          - exp_labels: { severity: critical, profile: smoke }
+            exp_annotations:
+              summary: 'Checkout server-side failures (error / SERVICE_UNAVAILABLE / CONFLICT) are 5% of attempts (smoke)'
+      - eval_time: 9m
+        alertname: CipHttp5xxRateHigh
+        exp_alerts:
+          - exp_labels: { severity: critical, profile: smoke, service: api }
+            exp_annotations:
+              summary: 'api (smoke) 5xx ratio is 10%'
+      - eval_time: 9m
+        alertname: CipDecisionLatencyP95High
+        exp_alerts:
+          - exp_labels: { severity: warning, profile: smoke }
+            exp_annotations:
+              summary: 'Decision API p95 is 97.22ms (smoke)'

@@ -1,0 +1,36 @@
+{
+  "name": "@cip/collector",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx watch src/main.ts",
+    "start": "node dist/main.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:integration": "vitest run -c vitest.integration.config.ts"
+  },
+  "dependencies": {
+    "@cip/contracts": "workspace:*",
+    "@cip/messaging": "workspace:*",
+    "@cip/observability": "workspace:*",
+    "@fastify/cors": "^11.3.0",
+    "fastify": "^5.12.5",
+    "geoip-lite": "^2.0.3",
+    "ioredis": "^5.11.1",
+    "pg": "^8.23.1",
+    "ua-parser-js": "^1.0.41",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@cip/config": "workspace:*",
+    "@types/geoip-lite": "^1.4.4",
+    "@types/pg": "^8.23.1",
+    "@types/ua-parser-js": "^0.7.39",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.15",
+    "vitest": "5.0.3",
+    "amqplib": "^2.2.0"
+  }
+}

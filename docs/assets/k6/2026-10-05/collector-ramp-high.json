@@ -1,0 +1,48 @@
+{
+  "scenario": "collector-ramp",
+  "finishedAt": "2026-10-05T01:36:19.430Z",
+  "durationSeconds": 106.02161500000001,
+  "requests": 46781,
+  "rps": 441.2402131395565,
+  "latencyMs": {
+    "p50": 4.443,
+    "p90": 27.066,
+    "p95": 158.76,
+    "p99": 422.7675999999999,
+    "max": 491.451
+  },
+  "errorRate": 0,
+  "checks": {
+    "passes": 46781,
+    "fails": 0
+  },
+  "thresholds": {
+    "http_req_failed{scenario:ramp}": {
+      "rate==0": true
+    },
+    "http_req_duration{scenario:ramp}": {
+      "p(95)<100": false
+    }
+  },
+  "custom": {
+    "events_accepted": {
+      "count": 935620,
+      "rate": 8824.80426279113
+    },
+    "target_batches_per_second": {
+      "value": 887.4030555555556,
+      "min": 10.811222222222222,
+      "max": 887.4030555555556
+    },
+    "events_rejected": {
+      "count": 0,
+      "rate": 0
+    }
+  },
+  "droppedIterations": 402,
+  "batchSize": 20,
+  "eventsPerSecondAvg": 8825,
+  "lastTargetBatchesPerSecond": 887.4030555555556,
+  "lastTargetEventsPerSecond": 17748,
+  "passed": false
+}

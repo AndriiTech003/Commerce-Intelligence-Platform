@@ -1,0 +1,77 @@
+{
+  "scenario": "checkout-contention",
+  "finishedAt": "2026-10-05T01:52:48.501Z",
+  "durationSeconds": 60.412509,
+  "requests": 39627,
+  "rps": 655.9403119641993,
+  "latencyMs": {
+    "p50": 197.7945,
+    "p90": 509.79850000000005,
+    "p95": 544.1747499999999,
+    "p99": 668.4590499999998,
+    "max": 1572.236
+  },
+  "errorRate": 0,
+  "checks": {
+    "passes": 20271,
+    "fails": 0
+  },
+  "thresholds": {
+    "checkout_5xx": {
+      "count==0": true
+    },
+    "orders_created_201": {
+      "count>0": true
+    },
+    "http_req_duration{scenario:buyers}": {
+      "p(95)<5000": true
+    },
+    "http_req_failed{scenario:buyers}": {
+      "rate<0.01": true
+    }
+  },
+  "custom": {
+    "orders_created_201": {
+      "count": 19335,
+      "rate": 320.04961091750056
+    },
+    "idempotent_replays": {
+      "count": 936,
+      "rate": 15.493480000971322
+    },
+    "checkout_5xx": {
+      "count": 0,
+      "rate": 0
+    },
+    "checkout_duration": {
+      "count": 19335,
+      "avg": 481.01429428497374,
+      "min": 136.163,
+      "med": 466.294,
+      "max": 1572.236,
+      "p(90)": 544.505,
+      "p(95)": 582.2033,
+      "p(99)": 806.0486999999997
+    }
+  },
+  "droppedIterations": 0,
+  "vus": 200,
+  "productPool": 20,
+  "ordersPerSecond": 320.05,
+  "checkoutAttempts": 19335,
+  "status": {
+    "201": 19335,
+    "409": 0,
+    "5xx": 0,
+    "other": 0,
+    "cartFailed": 0,
+    "cart409": 0
+  },
+  "conflictShare": 0,
+  "checkoutLatencyMs": {
+    "p50": 466.294,
+    "p95": 582.2033,
+    "p99": 806.0486999999997
+  },
+  "passed": true
+}

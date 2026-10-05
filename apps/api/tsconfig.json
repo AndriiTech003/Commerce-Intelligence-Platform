@@ -1,0 +1,10 @@
+{
+  "extends": "@cip/config/tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+    "noEmit": true
+  },
+  "include": ["src", "test", "*.config.ts"]
+}

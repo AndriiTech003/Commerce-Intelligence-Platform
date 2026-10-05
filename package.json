@@ -1,0 +1,58 @@
+{
+  "name": "commerce-intelligence-platform",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.34.6",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "turbo run dev --filter='./apps/*'",
+    "build": "turbo run build",
+    "lint": "eslint . --max-warnings=0 && pnpm boundaries",
+    "boundaries": "depcruise apps packages --config .dependency-cruiser.cjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:integration": "turbo run test:integration --concurrency=1",
+    "test:e2e": "playwright test -c e2e/playwright.config.ts",
+    "size": "turbo run size",
+    "db:migrate": "pnpm --filter @cip/api db:migrate",
+    "ch:migrate": "pnpm --filter @cip/stream-worker ch:migrate",
+    "mq:topology": "node scripts/rabbitmq-apply.mjs",
+    "infra:setup": "node scripts/setup-local.mjs",
+    "seed": "pnpm --filter @cip/api seed",
+    "openapi": "pnpm --filter @cip/api openapi:emit && pnpm --filter @cip/api-client generate",
+    "smoke": "bash scripts/smoke.sh",
+    "loadtest": "k6 run infra/k6/collector-ramp.js",
+    "rabbitmq:generate": "node infra/rabbitmq/generate.mjs",
+    "reembed": "pnpm --filter @cip/domain-worker reembed",
+    "eval:creatives": "pnpm --filter @cip/api eval:creatives",
+    "demo:reset": "node scripts/demo-reset.mjs",
+    "bench:rls": "node scripts/rls-bench.mjs",
+    "quality:audit": "node scripts/quality-audit.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "1.63.0",
+    "@types/node": "^24.0.0",
+    "dependency-cruiser": "^18.5.0",
+    "eslint": "^10.11.0",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "globals": "^16.0.0",
+    "lighthouse": "13.5.0",
+    "pg": "^8.23.1",
+    "prettier": "^3.9.9",
+    "turbo": "^2.11.6",
+    "typescript": "6.0.3",
+    "typescript-eslint": "^8.71.0",
+    "ws": "^8.22.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@ashamrai/flags-evaluator": "file:vendor/ashamrai-flags-evaluator-0.0.0.tgz"
+    }
+  }
+}

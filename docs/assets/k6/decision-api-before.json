@@ -1,0 +1,47 @@
+{
+  "scenario": "decision-api",
+  "finishedAt": "2026-10-02T23:53:46.710Z",
+  "durationSeconds": 72.041254,
+  "requests": 6409,
+  "rps": 88.96291560943679,
+  "latencyMs": {
+    "p50": 16.691,
+    "p90": 216.21859999999998,
+    "p95": 945.4345999999988,
+    "p99": 2744.661919999999,
+    "max": 5522.662
+  },
+  "errorRate": 0,
+  "checks": {
+    "passes": 5808,
+    "fails": 0
+  },
+  "thresholds": {
+    "http_req_duration{name:GET /v1/storefront/decisions}": {
+      "p(95)<50": false
+    },
+    "http_req_failed{scenario:decisions}": {
+      "rate<0.001": true
+    }
+  },
+  "custom": {
+    "warm_profiles": {
+      "count": 600,
+      "rate": 8.328561299057899
+    },
+    "decisions_200": {
+      "count": 5808,
+      "rate": 80.62047337488046
+    }
+  },
+  "droppedIterations": 193,
+  "placement": "home_hero",
+  "profiles": 2000,
+  "warmProfiles": 600,
+  "decisionLatencyMs": {
+    "p50": 19.8935,
+    "p95": 1068.822299999996,
+    "p99": 2906.9938299999994
+  },
+  "passed": false
+}

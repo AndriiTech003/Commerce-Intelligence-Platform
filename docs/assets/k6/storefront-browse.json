@@ -1,0 +1,64 @@
+{
+  "scenario": "storefront-browse",
+  "finishedAt": "2026-10-02T23:57:22.242Z",
+  "durationSeconds": 60.058397,
+  "requests": 3003,
+  "rps": 50.00133453445319,
+  "latencyMs": {
+    "p50": 8.934,
+    "p90": 20.409,
+    "p95": 33.129,
+    "p99": 92.283,
+    "max": 295.185
+  },
+  "errorRate": 0,
+  "checks": {
+    "passes": 3001,
+    "fails": 0
+  },
+  "thresholds": {
+    "http_req_duration{name:search suggest}": {
+      "p(95)<200": true
+    },
+    "http_req_failed{scenario:browse}": {
+      "rate<0.001": true
+    },
+    "http_req_duration{name:catalog list}": {
+      "p(95)<200": true
+    },
+    "http_req_duration{name:recommendations}": {
+      "p(95)<200": true
+    },
+    "http_req_duration{name:product}": {
+      "p(95)<200": true
+    },
+    "http_req_duration{scenario:browse}": {
+      "p(95)<200": true
+    }
+  },
+  "custom": {},
+  "droppedIterations": 0,
+  "routesMs": {
+      "catalogList": {
+        "p50": 11.4285,
+        "p95": 44.72299999999991,
+        "p99": 97.81235
+      },
+      "product": {
+        "p50": 4.9395,
+        "p95": 20.451999999999977,
+        "p99": 52.23174999999999
+      },
+      "searchSuggest": {
+        "p50": 6.0625,
+        "p95": 15.638299999999983,
+        "p99": 47.61421999999999
+      },
+      "recommendations": {
+        "p50": 11.556,
+        "p95": 37.77339999999999,
+        "p99": 108.00544
+      }
+    },
+  "passed": true
+}

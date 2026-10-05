@@ -1,0 +1,80 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 15s
+  external_labels:
+    env: local
+
+rule_files:
+  - rules/*.yml
+
+scrape_configs:
+  - job_name: cip-dev
+    metrics_path: /metrics
+    honor_labels: true
+    static_configs:
+      - labels: { profile: dev, service: api }
+        targets: ['127.0.0.1:4100']
+      - labels: { profile: dev, service: collector }
+        targets: ['127.0.0.1:4110']
+      - labels: { profile: dev, service: realtime-gateway }
+        targets: ['127.0.0.1:4120']
+      - labels: { profile: dev, service: stream-worker }
+        targets: ['127.0.0.1:4150']
+      - labels: { profile: dev, service: domain-worker }
+        targets: ['127.0.0.1:4151']
+      - labels: { profile: dev, service: simulator }
+        targets: ['127.0.0.1:4160']
+      - labels: { profile: dev, service: embeddings-server }
+        targets: ['127.0.0.1:4189']
+
+  - job_name: cip-smoke
+    metrics_path: /metrics
+    honor_labels: true
+    static_configs:
+      - labels: { profile: smoke, service: api }
+        targets: ['127.0.0.1:4180']
+      - labels: { profile: smoke, service: collector }
+        targets: ['127.0.0.1:4181']
+      - labels: { profile: smoke, service: realtime-gateway }
+        targets: ['127.0.0.1:4182']
+      - labels: { profile: smoke, service: stream-worker }
+        targets: ['127.0.0.1:4183']
+      - labels: { profile: smoke, service: domain-worker }
+        targets: ['127.0.0.1:4184']
+      - labels: { profile: smoke, service: simulator }
+        targets: ['127.0.0.1:4187']
+
+  - job_name: cip-e2e
+    metrics_path: /metrics
+    honor_labels: true
+    static_configs:
+      - labels: { profile: e2e, service: api }
+        targets: ['127.0.0.1:4170']
+      - labels: { profile: e2e, service: collector }
+        targets: ['127.0.0.1:4171']
+      - labels: { profile: e2e, service: realtime-gateway }
+        targets: ['127.0.0.1:4172']
+      - labels: { profile: e2e, service: stream-worker }
+        targets: ['127.0.0.1:4173']
+      - labels: { profile: e2e, service: domain-worker }
+        targets: ['127.0.0.1:4174']
+      - labels: { profile: e2e, service: simulator }
+        targets: ['127.0.0.1:4177']
+
+  - job_name: rabbitmq
+    metrics_path: /metrics
+    static_configs:
+      - labels: { service: rabbitmq }
+        targets: ['127.0.0.1:4197']
+
+  - job_name: datastores
+    metrics_path: /metrics
+    scrape_interval: 15s
+    static_configs:
+      - labels: { service: datastores }
+        targets: ['127.0.0.1:4196']
+
+  - job_name: prometheus
+    static_configs:
+      - labels: { service: prometheus }
+        targets: ['127.0.0.1:4191']

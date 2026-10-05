@@ -1,0 +1,125 @@
+groups:
+  - name: cip-recording
+    interval: 15s
+    rules:
+      - record: cip:http_requests:rate1m
+        expr: >-
+          sum by (profile, service, status) (rate(http_requests_total[1m]))
+          or
+          sum by (profile, service, status) (rate(collector_request_duration_seconds_count[1m]))
+      - record: cip:queue_backlog:messages
+        expr: sum by (vhost, queue) (rabbitmq_queue_messages{queue=~"q\\.[a-z.]+", queue!~".*\\.(dlq|retry\\..+)"})
+      - record: cip:dlq:messages
+        expr: sum by (vhost, queue) (rabbitmq_queue_messages{queue=~"q\\..+\\.dlq"})
+      - record: cip:message_end_to_end_seconds:p95_5m
+        expr: histogram_quantile(0.95, sum by (profile, queue, le) (rate(message_end_to_end_seconds_bucket[5m])))
+      - record: cip:orders_placed:rate5m
+        expr: sum by (profile, currency) (rate(orders_placed_total[5m]))
+      - record: cip:order_revenue_cents:rate5m
+        expr: sum by (profile, currency) (rate(order_revenue_cents_total[5m]))
+      - record: cip:conversion_view_to_order:ratio15m
+        expr: >-
+          sum by (profile) (increase(orders_placed_total[15m]))
+          / sum by (profile) (increase(collector_events_by_type_total{event_type="product_viewed"}[15m]))
+      - record: cip:checkout_server_failures:ratio5m
+        expr: >-
+          sum by (profile) (rate(checkout_failures_total{reason=~"error|SERVICE_UNAVAILABLE|CONFLICT"}[5m]))
+          / (sum by (profile) (rate(checkout_failures_total[5m])) + sum by (profile) (rate(orders_placed_total[5m])))
+      - record: cip:decisions_policy_share:ratio5m
+        expr: >-
+          sum by (profile, policy) (rate(decisions_total[5m]))
+          / on (profile) group_left () sum by (profile) (rate(decisions_total[5m]))
+      - record: cip:decision_latency_seconds:p95_5m
+        expr: histogram_quantile(0.95, sum by (profile, le) (rate(decision_latency_seconds_bucket[5m])))
+
+  - name: cip-alerts
+    interval: 15s
+    rules:
+      - alert: CipDlqNotEmpty
+        expr: cip:dlq:messages > 0
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: 'DLQ {{ $labels.queue }} in vhost {{ $labels.vhost }} has {{ $value }} messages'
+          runbook: Inspect and replay from Platform admin → DLQ (POST /v1/platform/dlq/:queue/replay)
+
+      - alert: CipEventFreshnessP95High
+        expr: cip:message_end_to_end_seconds:p95_5m > 10
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: 'p95 end-to-end freshness of {{ $labels.queue }} ({{ $labels.profile }}) is {{ $value | humanizeDuration }}'
+
+      - alert: CipHttp5xxRateHigh
+        expr: >-
+          sum by (profile, service) (rate(http_requests_total{status=~"5.."}[5m]))
+          / sum by (profile, service) (rate(http_requests_total[5m])) > 0.01
+          or
+          sum by (profile, service) (rate(collector_request_duration_seconds_count{status=~"5.."}[5m]))
+          / sum by (profile, service) (rate(collector_request_duration_seconds_count[5m])) > 0.01
+        for: 5m
+        labels: { severity: critical }
+        annotations:
+          summary: '{{ $labels.service }} ({{ $labels.profile }}) 5xx ratio is {{ $value | humanizePercentage }}'
+
+      - alert: CipCheckoutServerErrors
+        expr: cip:checkout_server_failures:ratio5m > 0.01
+        for: 5m
+        labels: { severity: critical }
+        annotations:
+          summary: 'Checkout server-side failures (error / SERVICE_UNAVAILABLE / CONFLICT) are {{ $value | humanizePercentage }} of attempts ({{ $labels.profile }})'
+
+      - alert: CipOutboxStale
+        expr: max by (profile) (outbox_oldest_unpublished_seconds) > 60
+        for: 1m
+        labels: { severity: critical }
+        annotations:
+          summary: 'Outbox rows unpublished for {{ $value | humanizeDuration }} ({{ $labels.profile }})'
+
+      - alert: CipQueueBacklogGrowing
+        expr: >-
+          cip:queue_backlog:messages > 500
+          and
+          sum by (vhost, queue) (deriv(rabbitmq_queue_messages{queue=~"q\\.[a-z.]+", queue!~".*\\.(dlq|retry\\..+)"}[2m])) > 0
+        for: 1m
+        labels: { severity: warning }
+        annotations:
+          summary: 'Consumer lag: {{ $labels.queue }} ({{ $labels.vhost }}) backlog {{ $value }} and growing'
+
+      - alert: CipDecisionLatencyP95High
+        expr: cip:decision_latency_seconds:p95_5m > 0.05
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: 'Decision API p95 is {{ $value | humanizeDuration }} ({{ $labels.profile }})'
+
+      - alert: CipServiceDown
+        expr: >-
+          up{job=~"cip-.+", service!~"simulator|embeddings-server"} == 0
+          and on (profile)
+          (max by (profile) (up{job=~"cip-.+", service!~"simulator|embeddings-server"}) == 1)
+        for: 30s
+        labels: { severity: critical }
+        annotations:
+          summary: '{{ $labels.service }} of the {{ $labels.profile }} stack is down'
+
+      - alert: CipRabbitMqDown
+        expr: rabbitmq_up == 0
+        for: 30s
+        labels: { severity: critical }
+        annotations:
+          summary: RabbitMQ management API is unreachable
+
+      - alert: CipCollectorBuffering
+        expr: max by (profile) (collector_buffer_size) > 0
+        for: 30s
+        labels: { severity: warning }
+        annotations:
+          summary: 'Collector ({{ $labels.profile }}) buffers {{ $value }} events in memory (broker unavailable)'
+
+      - alert: CipEventLoopLagHigh
+        expr: max by (profile, service) (nodejs_eventloop_lag_p99_seconds) > 0.2
+        for: 2m
+        labels: { severity: warning }
+        annotations:
+          summary: '{{ $labels.service }} ({{ $labels.profile }}) event loop p99 lag {{ $value | humanizeDuration }}'

@@ -1,0 +1,1962 @@
+{
+  "date": "2026-10-05T00:24:04.346Z",
+  "sqlDataset": {
+    "tenants": 40,
+    "products": 11850,
+    "variants": 43592,
+    "orders": 80000,
+    "order_items": 160000
+  },
+  "sql": {
+    "dataset": {
+      "tenants": 40,
+      "products": 11850,
+      "variants": 43592,
+      "orders": 80000,
+      "order_items": 160000
+    },
+    "results": [
+      {
+        "name": "category by slug",
+        "rowsMatch": true,
+        "rows": {
+          "rls": 2000,
+          "rlsExplicit": 2000,
+          "plain": 2000
+        },
+        "transaction": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.20572728100002133,
+            "p50": 0.19522950000100536,
+            "p95": 0.25704585000494257,
+            "p99": 0.40218883999499644
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.14889556250005626,
+            "p50": 0.14239550000274903,
+            "p95": 0.18918364999699405,
+            "p99": 0.26827799999409757
+          },
+          "overheadP50": 0.37103700606575596,
+          "overheadP50Ci": {
+            "low": 0.36253163573145164,
+            "high": 0.38085352653855215
+          },
+          "overheadP95": 0.3587107025846408,
+          "overheadP95Ci": {
+            "low": 0.31185680008463534,
+            "high": 0.405781330328631
+          },
+          "deltaP50Ms": 0.05283399999825633,
+          "blocks": [
+            0.3574422868432028,
+            0.35009215405497374,
+            0.3694419410843244,
+            0.3704589588995999
+          ]
+        },
+        "transactionRlsExplicit": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.20865776649998952,
+            "p50": 0.20102100000076462,
+            "p95": 0.2648705500010692,
+            "p99": 0.3645649099983709
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.14889556250005626,
+            "p50": 0.14239550000274903,
+            "p95": 0.18918364999699405,
+            "p99": 0.26827799999409757
+          },
+          "overheadP50": 0.41170893740942494,
+          "overheadP50Ci": {
+            "low": 0.40160368136696645,
+            "high": 0.4203175501277344
+          },
+          "overheadP95": 0.4000710421079079,
+          "overheadP95Ci": {
+            "low": 0.34750854560556266,
+            "high": 0.44956527794068857
+          },
+          "deltaP50Ms": 0.058625499998015584,
+          "blocks": [
+            0.39523270164032165,
+            0.38009138751221094,
+            0.4108873483725124,
+            0.4172615382331759
+          ]
+        },
+        "queryOnly": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.08434379699984493,
+            "p50": 0.0780205000010028,
+            "p95": 0.10716905000190309,
+            "p99": 0.18064866000189786
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.07873186999997779,
+            "p50": 0.07416649999868241,
+            "p95": 0.10104725000164762,
+            "p99": 0.1543795799982763
+          },
+          "overheadP50": 0.05196416174942664,
+          "overheadP50Ci": {
+            "low": 0.04492760215855884,
+            "high": 0.05938911602632903
+          },
+          "overheadP95": 0.06058353889052559,
+          "overheadP95Ci": {
+            "low": 0.014398042841779219,
+            "high": 0.0975936726291566
+          },
+          "deltaP50Ms": 0.00385400000232039,
+          "blocks": [
+            0.07182506065286098,
+            0.04562962965908235,
+            0.04895076392341946,
+            0.0552256187879836
+          ]
+        },
+        "plans": {
+          "rls": [
+            "Limit",
+            "  InitPlan 1 (returns $0)",
+            "    ->  Result",
+            "  ->  Index Scan using categories_tenant_slug_unique on categories",
+            "        Index Cond: ((tenant_id = $0) AND (slug = 'running'::text))"
+          ],
+          "plain": [
+            "Limit",
+            "  ->  Index Scan using categories_tenant_slug_unique on categories",
+            "        Index Cond: ((tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid) AND (slug = 'running'::text))"
+          ]
+        }
+      },
+      {
+        "name": "product by slug (PDP)",
+        "rowsMatch": true,
+        "rows": {
+          "rls": 2000,
+          "rlsExplicit": 2000,
+          "plain": 2000
+        },
+        "transaction": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.3193530989999999,
+            "p50": 0.28433299999596784,
+            "p95": 0.6214871500011213,
+            "p99": 0.8482729200040192
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.2560960945000843,
+            "p50": 0.22385450000001583,
+            "p95": 0.5020038500006194,
+            "p99": 0.7202224999998724
+          },
+          "overheadP50": 0.2701687926574974,
+          "overheadP50Ci": {
+            "low": 0.25999974897168465,
+            "high": 0.27910253366110216
+          },
+          "overheadP95": 0.23801271643704425,
+          "overheadP95Ci": {
+            "low": 0.13496091061324772,
+            "high": 0.3352765840002482
+          },
+          "deltaP50Ms": 0.060478499995952006,
+          "blocks": [
+            0.27316032023646963,
+            0.26049598434582766,
+            0.22888194793965644,
+            0.28689027607849016
+          ]
+        },
+        "transactionRlsExplicit": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.3301931095001091,
+            "p50": 0.2905415000022913,
+            "p95": 0.6365666500005317,
+            "p99": 0.9457566699989547
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.2560960945000843,
+            "p50": 0.22385450000001583,
+            "p95": 0.5020038500006194,
+            "p99": 0.7202224999998724
+          },
+          "overheadP50": 0.29790332560779764,
+          "overheadP50Ci": {
+            "low": 0.2881290272921498,
+            "high": 0.3075262583521423
+          },
+          "overheadP95": 0.2680513306815202,
+          "overheadP95Ci": {
+            "low": 0.15378020463536896,
+            "high": 0.3700763419096909
+          },
+          "deltaP50Ms": 0.06668700000227545,
+          "blocks": [
+            0.29425298888712526,
+            0.2945608438398968,
+            0.2859754026934438,
+            0.3055411147260165
+          ]
+        },
+        "queryOnly": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.19443528600005447,
+            "p50": 0.16927099999884376,
+            "p95": 0.39650450000335685,
+            "p99": 0.586765590002833
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.18021766700007355,
+            "p50": 0.1570419999989099,
+            "p95": 0.37148365000175537,
+            "p99": 0.5241625000035128
+          },
+          "overheadP50": 0.07787088804280873,
+          "overheadP50Ci": {
+            "low": 0.06918550291048534,
+            "high": 0.084598656515099
+          },
+          "overheadP95": 0.0673538391298869,
+          "overheadP95Ci": {
+            "low": -0.017860825472891584,
+            "high": 0.22351696451578618
+          },
+          "deltaP50Ms": 0.012228999999933876,
+          "blocks": [
+            0.0808190526121153,
+            0.07012527941405744,
+            0.06829287793806871,
+            0.096910756122077
+          ]
+        },
+        "plans": {
+          "rls": [
+            "Limit",
+            "  InitPlan 1 (returns $0)",
+            "    ->  Result",
+            "  InitPlan 2 (returns $1)",
+            "    ->  Result",
+            "  ->  Nested Loop Left Join",
+            "        ->  Index Scan using products_tenant_slug_unique on products p",
+            "              Index Cond: ((tenant_id = $0) AND (slug = 'mountain-co-x-summit'::text))",
+            "              Filter: (status = 'active'::text)",
+            "        ->  Index Scan using categories_pkey on categories c",
+            "              Index Cond: (id = p.category_id)",
+            "              Filter: (tenant_id = $1)"
+          ],
+          "plain": [
+            "Limit",
+            "  ->  Nested Loop Left Join",
+            "        ->  Index Scan using products_tenant_slug_unique on products p",
+            "              Index Cond: ((tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid) AND (slug = 'mountain-co-x-summit'::text))",
+            "              Filter: (status = 'active'::text)",
+            "        ->  Index Scan using categories_pkey on categories c",
+            "              Index Cond: (id = p.category_id)"
+          ]
+        }
+      },
+      {
+        "name": "variants + stock of a product",
+        "rowsMatch": true,
+        "rows": {
+          "rls": 7481,
+          "rlsExplicit": 7481,
+          "plain": 7481
+        },
+        "transaction": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.28219145849991034,
+            "p50": 0.26783350000187056,
+            "p95": 0.3635877999990043,
+            "p99": 0.5865100000048551
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.2204153979999246,
+            "p50": 0.2083749999947031,
+            "p95": 0.275412499997401,
+            "p99": 0.5006085100012568
+          },
+          "overheadP50": 0.2853437312953997,
+          "overheadP50Ci": {
+            "low": 0.27849692095170353,
+            "high": 0.2939974424762605
+          },
+          "overheadP95": 0.3201572187262214,
+          "overheadP95Ci": {
+            "low": 0.2565981857120024,
+            "high": 0.3526563272826472
+          },
+          "deltaP50Ms": 0.05945850000716746,
+          "blocks": [
+            0.28718791664514054,
+            0.307069394803579,
+            0.2879422654771082,
+            0.27787688896992724
+          ]
+        },
+        "transactionRlsExplicit": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.28894862250001097,
+            "p50": 0.2743750000008731,
+            "p95": 0.3663767500052927,
+            "p99": 0.579613839998783
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.2204153979999246,
+            "p50": 0.2083749999947031,
+            "p95": 0.275412499997401,
+            "p99": 0.5006085100012568
+          },
+          "overheadP50": 0.3167366527071276,
+          "overheadP50Ci": {
+            "low": 0.3104017187640965,
+            "high": 0.3233517072303886
+          },
+          "overheadP95": 0.33028366544274546,
+          "overheadP95Ci": {
+            "low": 0.2781679172870988,
+            "high": 0.367043049407975
+          },
+          "deltaP50Ms": 0.06600000000617001,
+          "blocks": [
+            0.3093690971810783,
+            0.33384807078652945,
+            0.31492689051974554,
+            0.30999881392872974
+          ]
+        },
+        "queryOnly": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.15694387849999475,
+            "p50": 0.14929200000187848,
+            "p95": 0.1983749999999418,
+            "p99": 0.33020524000239654
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.14693885299998874,
+            "p50": 0.13945799999783048,
+            "p95": 0.18380414999664932,
+            "p99": 0.3532966600001236
+          },
+          "overheadP50": 0.07051585426580753,
+          "overheadP50Ci": {
+            "low": 0.06517857145706264,
+            "high": 0.07633844377433567
+          },
+          "overheadP95": 0.07927378137848407,
+          "overheadP95Ci": {
+            "low": 0.03895962351853009,
+            "high": 0.11603463613237905
+          },
+          "deltaP50Ms": 0.009834000004047994,
+          "blocks": [
+            0.06417413996856913,
+            0.07314188326662396,
+            0.0696186980725646,
+            0.06221164530530521
+          ]
+        },
+        "plans": {
+          "rls": [
+            "Sort",
+            "  Sort Key: v.price_cents, v.sku",
+            "  InitPlan 1 (returns $0)",
+            "    ->  Result",
+            "  InitPlan 2 (returns $1)",
+            "    ->  Result",
+            "  ->  Nested Loop Left Join",
+            "        ->  Bitmap Heap Scan on product_variants v",
+            "              Recheck Cond: (product_id = '01a10972-4709-70ba-a604-455597b06cd7'::uuid)",
+            "              Filter: (tenant_id = $0)",
+            "              ->  Bitmap Index Scan on product_variants_product_idx",
+            "                    Index Cond: (product_id = '01a10972-4709-70ba-a604-455597b06cd7'::uuid)",
+            "        ->  Index Scan using inventory_items_pkey on inventory_items i",
+            "              Index Cond: (variant_id = v.id)",
+            "              Filter: (tenant_id = $1)"
+          ],
+          "plain": [
+            "Sort",
+            "  Sort Key: v.price_cents, v.sku",
+            "  ->  Nested Loop Left Join",
+            "        ->  Bitmap Heap Scan on product_variants v",
+            "              Recheck Cond: (product_id = '01a10972-4709-70ba-a604-455597b06cd7'::uuid)",
+            "              Filter: (tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid)",
+            "              ->  Bitmap Index Scan on product_variants_product_idx",
+            "                    Index Cond: (product_id = '01a10972-4709-70ba-a604-455597b06cd7'::uuid)",
+            "        ->  Index Scan using inventory_items_pkey on inventory_items i",
+            "              Index Cond: (variant_id = v.id)"
+          ]
+        }
+      },
+      {
+        "name": "storefront list, newest 24",
+        "rowsMatch": true,
+        "rows": {
+          "rls": 48000,
+          "rlsExplicit": 48000,
+          "plain": 48000
+        },
+        "transaction": {
+          "rls": {
+            "n": 2000,
+            "mean": 2.6177722869999416,
+            "p50": 2.7762294999920414,
+            "p95": 3.680000000007567,
+            "p99": 4.039665999997087
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 3.05848267349985,
+            "p50": 3.207021000009263,
+            "p95": 4.370706599990808,
+            "p99": 5.120961749999551
+          },
+          "overheadP50": -0.1343276205600079,
+          "overheadP50Ci": {
+            "low": -0.14583656565874054,
+            "high": -0.1292453550962929
+          },
+          "overheadP95": -0.1580308776582473,
+          "overheadP95Ci": {
+            "low": -0.16783680771823198,
+            "high": -0.15068302997076427
+          },
+          "deltaP50Ms": -0.43079150001722155,
+          "blocks": [
+            -0.055955234980114565,
+            -0.14942130871713089,
+            -0.1567069042657241,
+            -0.1449003668860196
+          ]
+        },
+        "transactionRlsExplicit": {
+          "rls": {
+            "n": 2000,
+            "mean": 2.761766099500055,
+            "p50": 2.9325000000026193,
+            "p95": 3.9023083499996574,
+            "p99": 4.259674489993922
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 3.05848267349985,
+            "p50": 3.207021000009263,
+            "p95": 4.370706599990808,
+            "p99": 5.120961749999551
+          },
+          "overheadP50": -0.08560000075018237,
+          "overheadP50Ci": {
+            "low": -0.09653097464246951,
+            "high": -0.07933956324274155
+          },
+          "overheadP95": -0.10716762593767704,
+          "overheadP95Ci": {
+            "low": -0.11930279845497656,
+            "high": -0.10059944940546393
+          },
+          "deltaP50Ms": -0.2745210000066436,
+          "blocks": [
+            -0.020422024408149775,
+            -0.10242554831979389,
+            -0.11043311547644252,
+            -0.09883020094338335
+          ]
+        },
+        "queryOnly": {
+          "rls": {
+            "n": 2000,
+            "mean": 2.1463836609997817,
+            "p50": 2.2283119999992778,
+            "p95": 3.1496583500054838,
+            "p99": 3.414838239995879
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 2.7563512810000903,
+            "p50": 2.8711249999978463,
+            "p95": 4.030045500006963,
+            "p99": 4.736168500002386
+          },
+          "overheadP50": -0.22388889372599619,
+          "overheadP50Ci": {
+            "low": -0.2385895632132143,
+            "high": -0.21366042136877927
+          },
+          "overheadP95": -0.2184558834385265,
+          "overheadP95Ci": {
+            "low": -0.22858992764164487,
+            "high": -0.2119420228618866
+          },
+          "deltaP50Ms": -0.6428129999985686,
+          "blocks": [
+            -0.18433944208851183,
+            -0.21669438522268525,
+            -0.22680938867188194,
+            -0.23125619112898543
+          ]
+        },
+        "plans": {
+          "rls": [
+            "Limit",
+            "  InitPlan 10 (returns $10)",
+            "    ->  Result",
+            "  InitPlan 11 (returns $11)",
+            "    ->  Result",
+            "  ->  Result",
+            "        ->  Sort",
+            "              Sort Key: p.created_at DESC, p.id DESC",
+            "              ->  Hash Left Join",
+            "                    Hash Cond: (p.category_id = c.id)",
+            "                    ->  Bitmap Heap Scan on products p",
+            "                          Recheck Cond: ((tenant_id = $10) AND (status = 'active'::text))",
+            "                          ->  Bitmap Index Scan on products_tenant_status_category_idx",
+            "                                Index Cond: ((tenant_id = $10) AND (status = 'active'::text))",
+            "                    ->  Hash",
+            "                          ->  Bitmap Heap Scan on categories c",
+            "                                Recheck Cond: (tenant_id = $11)",
+            "                                ->  Bitmap Index Scan on categories_tenant_slug_unique",
+            "                                      Index Cond: (tenant_id = $11)",
+            "        SubPlan 2",
+            "          ->  Aggregate",
+            "                InitPlan 1 (returns $1)",
+            "                  ->  Result",
+            "                ->  Bitmap Heap Scan on product_variants v",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      Filter: (tenant_id = $1)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 4",
+            "          ->  Aggregate",
+            "                InitPlan 3 (returns $3)",
+            "                  ->  Result",
+            "                ->  Bitmap Heap Scan on product_variants v_1",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      Filter: (tenant_id = $3)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 6",
+            "          ->  Limit",
+            "                InitPlan 5 (returns $5)",
+            "                  ->  Result",
+            "                ->  Sort",
+            "                      Sort Key: pi.\"position\"",
+            "                      ->  Seq Scan on product_images pi",
+            "                            Filter: ((tenant_id = $5) AND (product_id = p.id))",
+            "        SubPlan 9",
+            "          ->  Aggregate",
+            "                InitPlan 7 (returns $7)",
+            "                  ->  Result",
+            "                InitPlan 8 (returns $8)",
+            "                  ->  Result",
+            "                ->  Nested Loop",
+            "                      ->  Bitmap Heap Scan on product_variants v_2",
+            "                            Recheck Cond: (product_id = p.id)",
+            "                            Filter: (tenant_id = $7)",
+            "                            ->  Bitmap Index Scan on product_variants_product_idx",
+            "                                  Index Cond: (product_id = p.id)",
+            "                      ->  Index Scan using inventory_items_pkey on inventory_items i",
+            "                            Index Cond: (variant_id = v_2.id)",
+            "                            Filter: (tenant_id = $8)"
+          ],
+          "plain": [
+            "Limit",
+            "  ->  Result",
+            "        ->  Sort",
+            "              Sort Key: p.created_at DESC, p.id DESC",
+            "              ->  Hash Left Join",
+            "                    Hash Cond: (p.category_id = c.id)",
+            "                    ->  Bitmap Heap Scan on products p",
+            "                          Recheck Cond: ((tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid) AND (status = 'active'::text))",
+            "                          ->  Bitmap Index Scan on products_tenant_status_category_idx",
+            "                                Index Cond: ((tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid) AND (status = 'active'::text))",
+            "                    ->  Hash",
+            "                          ->  Seq Scan on categories c",
+            "                    SubPlan 3",
+            "                      ->  Limit",
+            "                            ->  Sort",
+            "                                  Sort Key: pi.\"position\"",
+            "                                  ->  Seq Scan on product_images pi",
+            "                                        Filter: (product_id = p.id)",
+            "        SubPlan 1",
+            "          ->  Aggregate",
+            "                ->  Bitmap Heap Scan on product_variants v",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 2",
+            "          ->  Aggregate",
+            "                ->  Bitmap Heap Scan on product_variants v_1",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 4",
+            "          ->  Aggregate",
+            "                ->  Nested Loop",
+            "                      ->  Bitmap Heap Scan on product_variants v_2",
+            "                            Recheck Cond: (product_id = p.id)",
+            "                            ->  Bitmap Index Scan on product_variants_product_idx",
+            "                                  Index Cond: (product_id = p.id)",
+            "                      ->  Index Scan using inventory_items_pkey on inventory_items i",
+            "                            Index Cond: (variant_id = v_2.id)"
+          ]
+        }
+      },
+      {
+        "name": "category page, price asc",
+        "rowsMatch": true,
+        "rows": {
+          "rls": 48000,
+          "rlsExplicit": 48000,
+          "plain": 48000
+        },
+        "transaction": {
+          "rls": {
+            "n": 2000,
+            "mean": 2.6707299789999888,
+            "p50": 2.724167000000307,
+            "p95": 4.774936900006287,
+            "p99": 5.297625829988683
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 2.8064659790000808,
+            "p50": 2.852187500000582,
+            "p95": 5.110797599995567,
+            "p99": 5.679194999995088
+          },
+          "overheadP50": -0.044885022460917856,
+          "overheadP50Ci": {
+            "low": -0.0534033000988873,
+            "high": -0.03500469951315966
+          },
+          "overheadP95": -0.06571590704150987,
+          "overheadP95Ci": {
+            "low": -0.08204917259706601,
+            "high": -0.051902769541606365
+          },
+          "deltaP50Ms": -0.1280205000002752,
+          "blocks": [
+            -0.04514819169837414,
+            -0.071426720516797,
+            -0.057276162837433975,
+            0.017743328208481346
+          ]
+        },
+        "transactionRlsExplicit": {
+          "rls": {
+            "n": 2000,
+            "mean": 2.711759652500106,
+            "p50": 2.7630210000061197,
+            "p95": 4.886586900000111,
+            "p99": 5.350345090009359
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 2.8064659790000808,
+            "p50": 2.852187500000582,
+            "p95": 5.110797599995567,
+            "p99": 5.679194999995088
+          },
+          "overheadP50": -0.031262495889363584,
+          "overheadP50Ci": {
+            "low": -0.04062494330691081,
+            "high": -0.02286816092137654
+          },
+          "overheadP95": -0.04387000181647771,
+          "overheadP95Ci": {
+            "low": -0.06134537921195203,
+            "high": -0.03259996396718466
+          },
+          "deltaP50Ms": -0.08916649999446236,
+          "blocks": [
+            -0.03756950058501862,
+            -0.04585388091226028,
+            -0.04375057120399062,
+            0.01139706073567881
+          ]
+        },
+        "queryOnly": {
+          "rls": {
+            "n": 2000,
+            "mean": 2.1871302340000693,
+            "p50": 2.2528539999984787,
+            "p95": 4.029675300003873,
+            "p99": 4.484056000005948
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 2.5072823004997264,
+            "p50": 2.575437500010594,
+            "p95": 4.66359760000123,
+            "p99": 5.224825000008423
+          },
+          "overheadP50": -0.12525386463883836,
+          "overheadP50Ci": {
+            "low": -0.13696728697772523,
+            "high": -0.11618156367238702
+          },
+          "overheadP95": -0.13592988811838946,
+          "overheadP95Ci": {
+            "low": -0.15049965730370052,
+            "high": -0.12289027859566745
+          },
+          "deltaP50Ms": -0.3225835000121151,
+          "blocks": [
+            -0.12670686283946997,
+            -0.13518427716513992,
+            -0.1245991121546508,
+            -0.11760994629541455
+          ]
+        },
+        "plans": {
+          "rls": [
+            "Limit",
+            "  InitPlan 10 (returns $10)",
+            "    ->  Result",
+            "  InitPlan 11 (returns $11)",
+            "    ->  Result",
+            "  ->  Result",
+            "        ->  Sort",
+            "              Sort Key: (COALESCE(p.price_min_cents, '0'::bigint)), p.id",
+            "              ->  Nested Loop",
+            "                    ->  Bitmap Heap Scan on categories c",
+            "                          Recheck Cond: (tenant_id = $11)",
+            "                          Filter: (path <@ 'running'::ltree)",
+            "                          ->  Bitmap Index Scan on categories_tenant_slug_unique",
+            "                                Index Cond: (tenant_id = $11)",
+            "                    ->  Index Scan using products_tenant_status_category_idx on products p",
+            "                          Index Cond: ((tenant_id = $10) AND (status = 'active'::text) AND (category_id = c.id))",
+            "        SubPlan 2",
+            "          ->  Aggregate",
+            "                InitPlan 1 (returns $1)",
+            "                  ->  Result",
+            "                ->  Bitmap Heap Scan on product_variants v",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      Filter: (tenant_id = $1)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 4",
+            "          ->  Aggregate",
+            "                InitPlan 3 (returns $3)",
+            "                  ->  Result",
+            "                ->  Bitmap Heap Scan on product_variants v_1",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      Filter: (tenant_id = $3)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 6",
+            "          ->  Limit",
+            "                InitPlan 5 (returns $5)",
+            "                  ->  Result",
+            "                ->  Sort",
+            "                      Sort Key: pi.\"position\"",
+            "                      ->  Seq Scan on product_images pi",
+            "                            Filter: ((tenant_id = $5) AND (product_id = p.id))",
+            "        SubPlan 9",
+            "          ->  Aggregate",
+            "                InitPlan 7 (returns $7)",
+            "                  ->  Result",
+            "                InitPlan 8 (returns $8)",
+            "                  ->  Result",
+            "                ->  Nested Loop",
+            "                      ->  Bitmap Heap Scan on product_variants v_2",
+            "                            Recheck Cond: (product_id = p.id)",
+            "                            Filter: (tenant_id = $7)",
+            "                            ->  Bitmap Index Scan on product_variants_product_idx",
+            "                                  Index Cond: (product_id = p.id)",
+            "                      ->  Index Scan using inventory_items_pkey on inventory_items i",
+            "                            Index Cond: (variant_id = v_2.id)",
+            "                            Filter: (tenant_id = $8)"
+          ],
+          "plain": [
+            "Limit",
+            "  ->  Result",
+            "        ->  Sort",
+            "              Sort Key: (COALESCE(p.price_min_cents, '0'::bigint)), p.id",
+            "              ->  Hash Join",
+            "                    Hash Cond: (p.category_id = c.id)",
+            "                    ->  Bitmap Heap Scan on products p",
+            "                          Recheck Cond: ((tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid) AND (status = 'active'::text))",
+            "                          ->  Bitmap Index Scan on products_tenant_status_category_idx",
+            "                                Index Cond: ((tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid) AND (status = 'active'::text))",
+            "                    ->  Hash",
+            "                          ->  Seq Scan on categories c",
+            "                                Filter: (path <@ 'running'::ltree)",
+            "                    SubPlan 3",
+            "                      ->  Limit",
+            "                            ->  Sort",
+            "                                  Sort Key: pi.\"position\"",
+            "                                  ->  Seq Scan on product_images pi",
+            "                                        Filter: (product_id = p.id)",
+            "        SubPlan 1",
+            "          ->  Aggregate",
+            "                ->  Bitmap Heap Scan on product_variants v",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 2",
+            "          ->  Aggregate",
+            "                ->  Bitmap Heap Scan on product_variants v_1",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 4",
+            "          ->  Aggregate",
+            "                ->  Nested Loop",
+            "                      ->  Bitmap Heap Scan on product_variants v_2",
+            "                            Recheck Cond: (product_id = p.id)",
+            "                            ->  Bitmap Index Scan on product_variants_product_idx",
+            "                                  Index Cond: (product_id = p.id)",
+            "                      ->  Index Scan using inventory_items_pkey on inventory_items i",
+            "                            Index Cond: (variant_id = v_2.id)"
+          ]
+        }
+      },
+      {
+        "name": "full-text search page",
+        "rowsMatch": true,
+        "rows": {
+          "rls": 15726,
+          "rlsExplicit": 15726,
+          "plain": 15726
+        },
+        "transaction": {
+          "rls": {
+            "n": 2000,
+            "mean": 1.8136430399998718,
+            "p50": 1.640625,
+            "p95": 2.834766350017162,
+            "p99": 4.44978833000001
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 1.710714756500136,
+            "p50": 1.4146869999967748,
+            "p95": 2.7820163500058697,
+            "p99": 4.880337329995528
+          },
+          "overheadP50": 0.15970882605391878,
+          "overheadP50Ci": {
+            "low": 0.14963291907626605,
+            "high": 0.16911253425804795
+          },
+          "overheadP95": 0.018961067576465096,
+          "overheadP95Ci": {
+            "low": -0.0694072909847943,
+            "high": 0.11104097684459013
+          },
+          "deltaP50Ms": 0.22593800000322517,
+          "blocks": [
+            0.19740077956439372,
+            0.16729585443210504,
+            0.13508066073260272,
+            0.14609002059251308
+          ]
+        },
+        "transactionRlsExplicit": {
+          "rls": {
+            "n": 2000,
+            "mean": 1.8104240210001226,
+            "p50": 1.6469375000015134,
+            "p95": 2.994868750001478,
+            "p99": 4.282837499997695
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 1.710714756500136,
+            "p50": 1.4146869999967748,
+            "p95": 2.7820163500058697,
+            "p99": 4.880337329995528
+          },
+          "overheadP50": 0.16417094382380548,
+          "overheadP50Ci": {
+            "low": 0.15440170338690545,
+            "high": 0.176192762004834
+          },
+          "overheadP95": 0.07651011827991572,
+          "overheadP95Ci": {
+            "low": -0.018944627678965244,
+            "high": 0.14544680063225535
+          },
+          "deltaP50Ms": 0.23225050000473857,
+          "blocks": [
+            0.20733704263108677,
+            0.17577890309410016,
+            0.14809284772142894,
+            0.14410308103329195
+          ]
+        },
+        "queryOnly": {
+          "rls": {
+            "n": 2000,
+            "mean": 1.4117091405002429,
+            "p50": 1.2311664999942877,
+            "p95": 2.4327356999870973,
+            "p99": 3.7297261700121447
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 1.4571380909997025,
+            "p50": 1.175479000012274,
+            "p95": 2.484087499981978,
+            "p99": 4.308104829990477
+          },
+          "overheadP50": 0.04737430441669521,
+          "overheadP50Ci": {
+            "low": 0.04164211858434687,
+            "high": 0.05670423801604881
+          },
+          "overheadP95": -0.020672299182397325,
+          "overheadP95Ci": {
+            "low": -0.13535027784039932,
+            "high": 0.04014268582140779
+          },
+          "deltaP50Ms": 0.05568749998201383,
+          "blocks": [
+            0.1009529168159442,
+            0.04563875974425491,
+            0.03386397217533621,
+            0.07623737712387224
+          ]
+        },
+        "plans": {
+          "rls": [
+            "Limit",
+            "  InitPlan 10 (returns $10)",
+            "    ->  Result",
+            "  InitPlan 11 (returns $11)",
+            "    ->  Result",
+            "  ->  Result",
+            "        ->  Sort",
+            "              Sort Key: ((ts_rank(p.search_tsv, '''bottle'''::tsquery) + similarity(p.title, 'bottle'::text))) DESC, p.id",
+            "              ->  Nested Loop Left Join",
+            "                    Join Filter: (c.id = p.category_id)",
+            "                    ->  Bitmap Heap Scan on products p",
+            "                          Recheck Cond: ((tenant_id = $10) AND (status = 'active'::text))",
+            "                          Filter: ((search_tsv @@ '''bottle'''::tsquery) OR (title % 'bottle'::text) OR (title ~~* '%bottle%'::text) OR (brand ~~* '%bottle%'::text))",
+            "                          ->  Bitmap Index Scan on products_tenant_status_category_idx",
+            "                                Index Cond: ((tenant_id = $10) AND (status = 'active'::text))",
+            "                    ->  Materialize",
+            "                          ->  Bitmap Heap Scan on categories c",
+            "                                Recheck Cond: (tenant_id = $11)",
+            "                                ->  Bitmap Index Scan on categories_tenant_slug_unique",
+            "                                      Index Cond: (tenant_id = $11)",
+            "        SubPlan 2",
+            "          ->  Aggregate",
+            "                InitPlan 1 (returns $1)",
+            "                  ->  Result",
+            "                ->  Bitmap Heap Scan on product_variants v",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      Filter: (tenant_id = $1)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 4",
+            "          ->  Aggregate",
+            "                InitPlan 3 (returns $3)",
+            "                  ->  Result",
+            "                ->  Bitmap Heap Scan on product_variants v_1",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      Filter: (tenant_id = $3)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 6",
+            "          ->  Limit",
+            "                InitPlan 5 (returns $5)",
+            "                  ->  Result",
+            "                ->  Sort",
+            "                      Sort Key: pi.\"position\"",
+            "                      ->  Seq Scan on product_images pi",
+            "                            Filter: ((tenant_id = $5) AND (product_id = p.id))",
+            "        SubPlan 9",
+            "          ->  Aggregate",
+            "                InitPlan 7 (returns $7)",
+            "                  ->  Result",
+            "                InitPlan 8 (returns $8)",
+            "                  ->  Result",
+            "                ->  Nested Loop",
+            "                      ->  Bitmap Heap Scan on product_variants v_2",
+            "                            Recheck Cond: (product_id = p.id)",
+            "                            Filter: (tenant_id = $7)",
+            "                            ->  Bitmap Index Scan on product_variants_product_idx",
+            "                                  Index Cond: (product_id = p.id)",
+            "                      ->  Index Scan using inventory_items_pkey on inventory_items i",
+            "                            Index Cond: (variant_id = v_2.id)",
+            "                            Filter: (tenant_id = $8)"
+          ],
+          "plain": [
+            "Limit",
+            "  ->  Result",
+            "        ->  Sort",
+            "              Sort Key: ((ts_rank(p.search_tsv, '''bottle'''::tsquery) + similarity(p.title, 'bottle'::text))) DESC, p.id",
+            "              ->  Nested Loop Left Join",
+            "                    ->  Bitmap Heap Scan on products p",
+            "                          Recheck Cond: ((tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid) AND (status = 'active'::text) AND ((search_tsv @@ '''bottle'''::tsquery) OR (title % 'bottle'::text) OR (title ~~* '%bottle%'::text) OR (brand ~~* '%bottle%'::text)))",
+            "                          ->  BitmapAnd",
+            "                                ->  Bitmap Index Scan on products_tenant_status_category_idx",
+            "                                      Index Cond: ((tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid) AND (status = 'active'::text))",
+            "                                ->  BitmapOr",
+            "                                      ->  Bitmap Index Scan on products_search_tsv_idx",
+            "                                            Index Cond: (search_tsv @@ '''bottle'''::tsquery)",
+            "                                      ->  Bitmap Index Scan on products_title_trgm_idx",
+            "                                            Index Cond: (title % 'bottle'::text)",
+            "                                      ->  Bitmap Index Scan on products_title_trgm_idx",
+            "                                            Index Cond: (title ~~* '%bottle%'::text)",
+            "                                      ->  Bitmap Index Scan on products_brand_trgm_idx",
+            "                                            Index Cond: (brand ~~* '%bottle%'::text)",
+            "                    ->  Index Scan using categories_pkey on categories c",
+            "                          Index Cond: (id = p.category_id)",
+            "                    SubPlan 3",
+            "                      ->  Limit",
+            "                            ->  Sort",
+            "                                  Sort Key: pi.\"position\"",
+            "                                  ->  Seq Scan on product_images pi",
+            "                                        Filter: (product_id = p.id)",
+            "        SubPlan 1",
+            "          ->  Aggregate",
+            "                ->  Bitmap Heap Scan on product_variants v",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 2",
+            "          ->  Aggregate",
+            "                ->  Bitmap Heap Scan on product_variants v_1",
+            "                      Recheck Cond: (product_id = p.id)",
+            "                      ->  Bitmap Index Scan on product_variants_product_idx",
+            "                            Index Cond: (product_id = p.id)",
+            "        SubPlan 4",
+            "          ->  Aggregate",
+            "                ->  Nested Loop",
+            "                      ->  Bitmap Heap Scan on product_variants v_2",
+            "                            Recheck Cond: (product_id = p.id)",
+            "                            ->  Bitmap Index Scan on product_variants_product_idx",
+            "                                  Index Cond: (product_id = p.id)",
+            "                      ->  Index Scan using inventory_items_pkey on inventory_items i",
+            "                            Index Cond: (variant_id = v_2.id)"
+          ]
+        }
+      },
+      {
+        "name": "search suggest (trigram)",
+        "rowsMatch": true,
+        "rows": {
+          "rls": 13266,
+          "rlsExplicit": 13266,
+          "plain": 13266
+        },
+        "transaction": {
+          "rls": {
+            "n": 2000,
+            "mean": 1.8231800974998478,
+            "p50": 1.7493545000033919,
+            "p95": 2.3921399000028023,
+            "p99": 4.383231249992968
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 2.0963730039996444,
+            "p50": 1.9339374999981374,
+            "p95": 2.9518295000161734,
+            "p99": 5.508601760025485
+          },
+          "overheadP50": -0.09544413922110884,
+          "overheadP50Ci": {
+            "low": -0.0987707575077487,
+            "high": -0.09241210859795258
+          },
+          "overheadP95": -0.18960769922866627,
+          "overheadP95Ci": {
+            "low": -0.25208359317397133,
+            "high": -0.11334886120000143
+          },
+          "deltaP50Ms": -0.18458299999474548,
+          "blocks": [
+            -0.08334217446766767,
+            -0.09533933421360219,
+            -0.14305537827364023,
+            -0.09627121291646124
+          ]
+        },
+        "transactionRlsExplicit": {
+          "rls": {
+            "n": 2000,
+            "mean": 1.8478890699994808,
+            "p50": 1.758124999993015,
+            "p95": 2.5210399000046886,
+            "p99": 3.8922537500044565
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 2.0963730039996444,
+            "p50": 1.9339374999981374,
+            "p95": 2.9518295000161734,
+            "p99": 5.508601760025485
+          },
+          "overheadP50": -0.09090909091182708,
+          "overheadP50Ci": {
+            "low": -0.0940940525656384,
+            "high": -0.08780077262254814
+          },
+          "overheadP95": -0.14593986543231052,
+          "overheadP95Ci": {
+            "low": -0.20680541132734892,
+            "high": -0.08508914489430519
+          },
+          "deltaP50Ms": -0.17581250000512227,
+          "blocks": [
+            -0.07701935340043797,
+            -0.08919928684435163,
+            -0.1423357737345785,
+            -0.09225871942107733
+          ]
+        },
+        "queryOnly": {
+          "rls": {
+            "n": 2000,
+            "mean": 1.4405558520002815,
+            "p50": 1.3220415000105277,
+            "p95": 1.9900981999991925,
+            "p99": 3.499131250001956
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 1.849089189999897,
+            "p50": 1.6953749999956926,
+            "p95": 2.6851312500060884,
+            "p99": 4.640036760009823
+          },
+          "overheadP50": -0.22020703383387952,
+          "overheadP50Ci": {
+            "low": -0.22463303067277157,
+            "high": -0.21427303086832974
+          },
+          "overheadP95": -0.2588450937008461,
+          "overheadP95Ci": {
+            "low": -0.32104719343695753,
+            "high": -0.18689381873561145
+          },
+          "deltaP50Ms": -0.37333349998516496,
+          "blocks": [
+            -0.20484056857206867,
+            -0.21424443382608394,
+            -0.22464288448456382,
+            -0.20865476886473133
+          ]
+        },
+        "plans": {
+          "rls": [
+            "Limit",
+            "  InitPlan 1 (returns $0)",
+            "    ->  Result",
+            "  ->  Sort",
+            "        Sort Key: ((p.title ~~* 'jacket%'::text)) DESC, (GREATEST(word_similarity('jacket'::text, p.title), similarity(p.title, 'jacket'::text))) DESC, p.title",
+            "        ->  Bitmap Heap Scan on products p",
+            "              Recheck Cond: ((tenant_id = $0) AND (status = 'active'::text))",
+            "              Filter: ((title ~~* '%jacket%'::text) OR (word_similarity('jacket'::text, title) > '0.3'::double precision) OR (title % 'jacket'::text))",
+            "              ->  Bitmap Index Scan on products_tenant_status_category_idx",
+            "                    Index Cond: ((tenant_id = $0) AND (status = 'active'::text))"
+          ],
+          "plain": [
+            "Limit",
+            "  ->  Sort",
+            "        Sort Key: ((title ~~* 'jacket%'::text)) DESC, (GREATEST(word_similarity('jacket'::text, title), similarity(title, 'jacket'::text))) DESC, title",
+            "        ->  Bitmap Heap Scan on products p",
+            "              Recheck Cond: ((tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid) AND (status = 'active'::text))",
+            "              Filter: ((title ~~* '%jacket%'::text) OR (word_similarity('jacket'::text, title) > '0.3'::double precision) OR (title % 'jacket'::text))",
+            "              ->  Bitmap Index Scan on products_tenant_status_category_idx",
+            "                    Index Cond: ((tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid) AND (status = 'active'::text))"
+          ]
+        }
+      },
+      {
+        "name": "admin orders, newest 50",
+        "rowsMatch": true,
+        "rows": {
+          "rls": 100000,
+          "rlsExplicit": 100000,
+          "plain": 100000
+        },
+        "transaction": {
+          "rls": {
+            "n": 2000,
+            "mean": 1.6496850119997544,
+            "p50": 1.087083000005805,
+            "p95": 3.6558517999976177,
+            "p99": 4.1293408300066945
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 1.7112134515000652,
+            "p50": 1.0183955000102287,
+            "p95": 3.8413496999899506,
+            "p99": 4.613243420024228
+          },
+          "overheadP50": 0.06744678270366111,
+          "overheadP50Ci": {
+            "low": 0.020605853643218226,
+            "high": 0.1299663058721787
+          },
+          "overheadP95": -0.048289771689575156,
+          "overheadP95Ci": {
+            "low": -0.06175257835174691,
+            "high": -0.034777724437410874
+          },
+          "deltaP50Ms": 0.06868749999557622,
+          "blocks": [
+            0.06087646944554015,
+            -0.10096271965154247,
+            0.07198594960903493,
+            0.03795780127841342
+          ]
+        },
+        "transactionRlsExplicit": {
+          "rls": {
+            "n": 2000,
+            "mean": 2.6105426185007237,
+            "p50": 1.6568124999903375,
+            "p95": 6.120747600002505,
+            "p99": 6.631892829988501
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 1.7112134515000652,
+            "p50": 1.0183955000102287,
+            "p95": 3.8413496999899506,
+            "p99": 4.613243420024228
+          },
+          "overheadP50": 0.626885134482327,
+          "overheadP50Ci": {
+            "low": 0.5154430761972547,
+            "high": 0.6779564031688182
+          },
+          "overheadP95": 0.5933846377013052,
+          "overheadP95Ci": {
+            "low": 0.5678957400901931,
+            "high": 0.6236563694358853
+          },
+          "deltaP50Ms": 0.6384169999801088,
+          "blocks": [
+            0.6398576475945461,
+            0.3866452510583889,
+            0.6790527249498148,
+            0.651004350297012
+          ]
+        },
+        "queryOnly": {
+          "rls": {
+            "n": 2000,
+            "mean": 1.2743410649999278,
+            "p50": 0.7736460000014631,
+            "p95": 2.9751826999781765,
+            "p99": 3.400897919992276
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 1.4808749634998677,
+            "p50": 0.8196665000141365,
+            "p95": 3.4494559499973545,
+            "p99": 4.129109670007019
+          },
+          "overheadP50": -0.05614539573336197,
+          "overheadP50Ci": {
+            "low": -0.10768644161081152,
+            "high": 0.001713847024221973
+          },
+          "overheadP95": -0.1374921891724814,
+          "overheadP95Ci": {
+            "low": -0.14791698417525395,
+            "high": -0.12277023897786793
+          },
+          "deltaP50Ms": -0.04602050001267344,
+          "blocks": [
+            -0.07462357463769465,
+            -0.185472139976552,
+            -0.054422423861195,
+            -0.10904249213712447
+          ]
+        },
+        "plans": {
+          "rls": [
+            "Limit",
+            "  InitPlan 1 (returns $0)",
+            "    ->  Result",
+            "  ->  Sort",
+            "        Sort Key: orders.placed_at DESC, orders.id DESC",
+            "        ->  Bitmap Heap Scan on orders",
+            "              Recheck Cond: (tenant_id = $0)",
+            "              ->  Bitmap Index Scan on orders_tenant_placed_idx",
+            "                    Index Cond: (tenant_id = $0)"
+          ],
+          "plain": [
+            "Limit",
+            "  ->  Sort",
+            "        Sort Key: placed_at DESC, id DESC",
+            "        ->  Bitmap Heap Scan on orders",
+            "              Recheck Cond: (tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid)",
+            "              ->  Bitmap Index Scan on orders_tenant_placed_idx",
+            "                    Index Cond: (tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid)"
+          ]
+        }
+      },
+      {
+        "name": "order detail (order + items)",
+        "rowsMatch": true,
+        "rows": {
+          "rls": 6000,
+          "rlsExplicit": 6000,
+          "plain": 6000
+        },
+        "transaction": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.29778712450012973,
+            "p50": 0.28160400000342634,
+            "p95": 0.42669164999388154,
+            "p99": 0.5368960799984052
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.2537622919998248,
+            "p50": 0.23181250000197906,
+            "p95": 0.397685699982685,
+            "p99": 0.5251718400063692
+          },
+          "overheadP50": 0.2147921272624307,
+          "overheadP50Ci": {
+            "low": 0.2110118724845085,
+            "high": 0.21864825709846167
+          },
+          "overheadP95": 0.07293686952399714,
+          "overheadP95Ci": {
+            "low": -0.04881644709045374,
+            "high": 0.09908785292117188
+          },
+          "deltaP50Ms": 0.049791500001447275,
+          "blocks": [
+            0.1980172189158409,
+            0.21207063649713231,
+            0.22920591030804127,
+            0.2201070933557414
+          ]
+        },
+        "transactionRlsExplicit": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.31120106500040856,
+            "p50": 0.2945624999993015,
+            "p95": 0.4358749999955762,
+            "p99": 0.5821167599866749
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.2537622919998248,
+            "p50": 0.23181250000197906,
+            "p95": 0.397685699982685,
+            "p99": 0.5251718400063692
+          },
+          "overheadP50": 0.27069290912606836,
+          "overheadP50Ci": {
+            "low": 0.2664963250283147,
+            "high": 0.2765629284302788
+          },
+          "overheadP95": 0.09602884894919272,
+          "overheadP95Ci": {
+            "low": -0.038344624215971554,
+            "high": 0.12686673977507765
+          },
+          "deltaP50Ms": 0.06274999999732245,
+          "blocks": [
+            0.261850247862085,
+            0.27268890719841044,
+            0.28165350141276235,
+            0.2717910193651949
+          ]
+        },
+        "queryOnly": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.1812167914997408,
+            "p50": 0.1669170000241138,
+            "p95": 0.2637877999921328,
+            "p99": 0.402476759996789
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.18525299949976035,
+            "p50": 0.16304200000013225,
+            "p95": 0.33008814998756864,
+            "p99": 0.46005474998411955
+          },
+          "overheadP50": 0.023766882300133796,
+          "overheadP50Ci": {
+            "low": 0.020129131865710463,
+            "high": 0.02735004147921716
+          },
+          "overheadP95": -0.20085649847755138,
+          "overheadP95Ci": {
+            "low": -0.301094184547455,
+            "high": -0.020643327782496418
+          },
+          "deltaP50Ms": 0.0038750000239815563,
+          "blocks": [
+            0.00807239625680567,
+            0.02647196097036697,
+            0.027140946872195038,
+            0.024548837241541
+          ]
+        },
+        "plans": {
+          "rls": [
+            "Limit",
+            "  InitPlan 1 (returns $0)",
+            "    ->  Result",
+            "  ->  Index Scan using orders_pkey on orders",
+            "        Index Cond: (id = 'c8761df0-c2d5-49ac-b1a6-63ed1789b44a'::uuid)",
+            "        Filter: (tenant_id = $0)"
+          ],
+          "plain": [
+            "Limit",
+            "  ->  Index Scan using orders_pkey on orders",
+            "        Index Cond: (id = 'c8761df0-c2d5-49ac-b1a6-63ed1789b44a'::uuid)",
+            "        Filter: (tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid)"
+          ]
+        }
+      },
+      {
+        "name": "reserve stock (UPDATE, rolled back)",
+        "rowsMatch": true,
+        "rows": {
+          "rls": 2000,
+          "rlsExplicit": 2000,
+          "plain": 2000
+        },
+        "transaction": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.20740323049998552,
+            "p50": 0.2041249999892898,
+            "p95": 0.23851875000545986,
+            "p99": 0.29191174999548813
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.1532809420005069,
+            "p50": 0.15049999998882413,
+            "p95": 0.17779615000181365,
+            "p99": 0.21734758997889
+          },
+          "overheadP50": 0.35631229238835727,
+          "overheadP50Ci": {
+            "low": 0.35130348254085697,
+            "high": 0.3620125355697505
+          },
+          "overheadP95": 0.3415293300953186,
+          "overheadP95Ci": {
+            "low": 0.3095960537911741,
+            "high": 0.37309183098745413
+          },
+          "deltaP50Ms": 0.05362500000046566,
+          "blocks": [
+            0.3557511454134865,
+            0.3586089016152558,
+            0.3579943792559279,
+            0.3551646014560046
+          ]
+        },
+        "transactionRlsExplicit": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.21206789249987923,
+            "p50": 0.20945799999753945,
+            "p95": 0.24084339998953508,
+            "p99": 0.28097757998853923
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.1532809420005069,
+            "p50": 0.15049999998882413,
+            "p95": 0.17779615000181365,
+            "p99": 0.21734758997889
+          },
+          "overheadP50": 0.3917475083926474,
+          "overheadP50Ci": {
+            "low": 0.38651492483605654,
+            "high": 0.3985255456767927
+          },
+          "overheadP95": 0.3546041350562332,
+          "overheadP95Ci": {
+            "low": 0.32185513544261213,
+            "high": 0.3823374182319284
+          },
+          "deltaP50Ms": 0.05895800000871532,
+          "blocks": [
+            0.3921234061373886,
+            0.3909412024672987,
+            0.3948368900675825,
+            0.39163187931733634
+          ]
+        },
+        "queryOnly": {
+          "rls": {
+            "n": 2000,
+            "mean": 0.08593091300039668,
+            "p50": 0.0831670000043232,
+            "p95": 0.10496220000932226,
+            "p99": 0.1304194899785216
+          },
+          "plain": {
+            "n": 2000,
+            "mean": 0.07920525749998342,
+            "p50": 0.07641650000005029,
+            "p95": 0.10029824998782715,
+            "p99": 0.12366642999957549
+          },
+          "overheadP50": 0.08833825161147746,
+          "overheadP50Ci": {
+            "low": 0.08438614591910416,
+            "high": 0.09254354883950766
+          },
+          "overheadP95": 0.04650081155016328,
+          "overheadP95Ci": {
+            "low": 0.014870180572071767,
+            "high": 0.0793509438380891
+          },
+          "deltaP50Ms": 0.006750500004272908,
+          "blocks": [
+            0.0870626522427409,
+            0.091875715798301,
+            0.09131587202698377,
+            0.08608878153896637
+          ]
+        },
+        "plans": {
+          "rls": [
+            "Update on inventory_items",
+            "  InitPlan 1 (returns $0)",
+            "    ->  Result",
+            "  InitPlan 2 (returns $1)",
+            "    ->  Result",
+            "  ->  Index Scan using inventory_items_pkey on inventory_items",
+            "        Index Cond: (variant_id = '01a10972-4819-7106-9879-d913df32eba4'::uuid)",
+            "        Filter: ((tenant_id = $1) AND ((on_hand - reserved) >= 1))"
+          ],
+          "plain": [
+            "Update on inventory_items",
+            "  ->  Index Scan using inventory_items_pkey on inventory_items",
+            "        Index Cond: (variant_id = '01a10972-4819-7106-9879-d913df32eba4'::uuid)",
+            "        Filter: ((tenant_id = '01a10972-46b5-7779-852b-29d233a343a3'::uuid) AND ((on_hand - reserved) >= 1))"
+          ]
+        }
+      }
+    ]
+  },
+  "http": {
+    "dataset": {
+      "tenants": 1,
+      "products": 300,
+      "variants": 1110,
+      "orders": 2000,
+      "order_items": 4000
+    },
+    "results": [
+      {
+        "name": "GET catalog/products (newest)",
+        "statuses": {
+          "rls": {
+            "200": 600
+          },
+          "plain": {
+            "200": 600
+          }
+        },
+        "bytesEqual": true,
+        "latency": {
+          "rls": {
+            "n": 600,
+            "mean": 5.375391043333948,
+            "p50": 5.245999999999185,
+            "p95": 6.652706250005576,
+            "p99": 7.609409079993201
+          },
+          "plain": {
+            "n": 600,
+            "mean": 5.029452361666433,
+            "p50": 4.876083499999368,
+            "p95": 6.2800752999974065,
+            "p99": 7.18665624999848
+          },
+          "overheadP50": 0.07586344655497901,
+          "overheadP50Ci": {
+            "low": 0.06194378302835062,
+            "high": 0.09658109070947336
+          },
+          "overheadP95": 0.05933542707813122,
+          "overheadP95Ci": {
+            "low": 0.024399375538327817,
+            "high": 0.09639997535289176
+          },
+          "deltaP50Ms": 0.36991649999981746,
+          "blocks": [
+            0.08177225500183694,
+            0.07660190806143108,
+            0.06599382055236891,
+            0.08940974447278704
+          ]
+        }
+      },
+      {
+        "name": "GET catalog/products?category&sort=price_asc",
+        "statuses": {
+          "rls": {
+            "200": 600
+          },
+          "plain": {
+            "200": 600
+          }
+        },
+        "bytesEqual": true,
+        "latency": {
+          "rls": {
+            "n": 600,
+            "mean": 5.332651746666282,
+            "p50": 5.182646000001114,
+            "p95": 6.704398549981122,
+            "p99": 7.092354590011526
+          },
+          "plain": {
+            "n": 600,
+            "mean": 4.813334121667091,
+            "p50": 4.6794170000066515,
+            "p95": 6.213472950020512,
+            "p99": 6.687686419992242
+          },
+          "overheadP50": 0.10754096076364794,
+          "overheadP50Ci": {
+            "low": 0.08170581168683227,
+            "high": 0.1366472624005851
+          },
+          "overheadP95": 0.07900985550423756,
+          "overheadP95Ci": {
+            "low": 0.050769369575733456,
+            "high": 0.11686417998855467
+          },
+          "deltaP50Ms": 0.5032289999944624,
+          "blocks": [
+            0.14001146032904588,
+            0.1051836177321761,
+            0.11090183884490745,
+            0.09741085411617201
+          ]
+        }
+      },
+      {
+        "name": "GET catalog/products/:slug (PDP)",
+        "statuses": {
+          "rls": {
+            "200": 600
+          },
+          "plain": {
+            "200": 600
+          }
+        },
+        "bytesEqual": true,
+        "latency": {
+          "rls": {
+            "n": 600,
+            "mean": 1.518824776666491,
+            "p50": 1.4691454999992857,
+            "p95": 1.8559982500082697,
+            "p99": 2.5814482499868596
+          },
+          "plain": {
+            "n": 600,
+            "mean": 1.489675898333371,
+            "p50": 1.430207999990671,
+            "p95": 1.850547899988305,
+            "p99": 2.5607567500139683
+          },
+          "overheadP50": 0.027225060976353577,
+          "overheadP50Ci": {
+            "low": 0.01896743679178896,
+            "high": 0.036703757779472955
+          },
+          "overheadP95": 0.0029452628705255446,
+          "overheadP95Ci": {
+            "low": -0.04204632513603327,
+            "high": 0.06055625874442583
+          },
+          "deltaP50Ms": 0.038937500008614734,
+          "blocks": [
+            0.0240878249431844,
+            0.02967984344303276,
+            0.02720971456657173,
+            0.03289150293877796
+          ]
+        }
+      },
+      {
+        "name": "GET search/suggest",
+        "statuses": {
+          "rls": {
+            "200": 600
+          },
+          "plain": {
+            "200": 600
+          }
+        },
+        "bytesEqual": true,
+        "latency": {
+          "rls": {
+            "n": 600,
+            "mean": 3.4816740266673634,
+            "p50": 3.1685209999850485,
+            "p95": 5.899529149998849,
+            "p99": 7.267000000003317
+          },
+          "plain": {
+            "n": 600,
+            "mean": 3.724266320000121,
+            "p50": 3.43114549999882,
+            "p95": 6.3325166499940675,
+            "p99": 7.328655500018501
+          },
+          "overheadP50": -0.07654134749280139,
+          "overheadP50Ci": {
+            "low": -0.09553787300648862,
+            "high": -0.05810106414391699
+          },
+          "overheadP95": -0.06837526435806907,
+          "overheadP95Ci": {
+            "low": -0.13346746676667745,
+            "high": -0.004810290952287282
+          },
+          "deltaP50Ms": -0.26262450001377147,
+          "blocks": [
+            -0.08614359309091202,
+            -0.07222836905961871,
+            -0.07100845767608122,
+            -0.06153841534705029
+          ]
+        }
+      },
+      {
+        "name": "POST cart/items (new cart)",
+        "statuses": {
+          "rls": {
+            "200": 600
+          },
+          "plain": {
+            "200": 600
+          }
+        },
+        "bytesEqual": true,
+        "latency": {
+          "rls": {
+            "n": 600,
+            "mean": 3.2131212466670935,
+            "p50": 3.131687499990221,
+            "p95": 3.8938913500023764,
+            "p99": 4.516102169985242
+          },
+          "plain": {
+            "n": 600,
+            "mean": 3.084571799999588,
+            "p50": 2.964833500009263,
+            "p95": 3.7531170000045675,
+            "p99": 4.621533660017298
+          },
+          "overheadP50": 0.056277696531841226,
+          "overheadP50Ci": {
+            "low": 0.03993372551097773,
+            "high": 0.06733036337780282
+          },
+          "overheadP95": 0.037508649476591716,
+          "overheadP95Ci": {
+            "low": 0.008888646944765082,
+            "high": 0.072953121066339
+          },
+          "deltaP50Ms": 0.16685399998095818,
+          "blocks": [
+            0.03852490939958386,
+            0.051021777727310536,
+            0.06172502457360607,
+            0.04788115025884432
+          ]
+        }
+      },
+      {
+        "name": "GET admin/orders (50)",
+        "statuses": {
+          "rls": {
+            "200": 600
+          },
+          "plain": {
+            "200": 600
+          }
+        },
+        "bytesEqual": true,
+        "latency": {
+          "rls": {
+            "n": 600,
+            "mean": 5.279436311666698,
+            "p50": 5.136708500009263,
+            "p95": 6.551783349981997,
+            "p99": 7.411359999977866
+          },
+          "plain": {
+            "n": 600,
+            "mean": 5.0394101566686,
+            "p50": 4.931999499996891,
+            "p95": 6.499598550000519,
+            "p99": 7.28673990999028
+          },
+          "overheadP50": 0.041506289692953224,
+          "overheadP50Ci": {
+            "low": 0.03191464460561264,
+            "high": 0.06171779040357111
+          },
+          "overheadP95": 0.008028926645242462,
+          "overheadP95Ci": {
+            "low": -0.008725379748971807,
+            "high": 0.04850571476086812
+          },
+          "deltaP50Ms": 0.2047090000123717,
+          "blocks": [
+            0.05777591501771684,
+            0.052667302852062337,
+            0.043147963051556326,
+            0.053315160051341515
+          ]
+        }
+      },
+      {
+        "name": "GET admin/orders/:id",
+        "statuses": {
+          "rls": {
+            "200": 600
+          },
+          "plain": {
+            "200": 600
+          }
+        },
+        "bytesEqual": true,
+        "latency": {
+          "rls": {
+            "n": 600,
+            "mean": 2.1819799999997,
+            "p50": 2.1229370000073686,
+            "p95": 2.5286494000072706,
+            "p99": 2.9692920799946294
+          },
+          "plain": {
+            "n": 600,
+            "mean": 2.0306838200001707,
+            "p50": 1.9665204999910202,
+            "p95": 2.369036050012801,
+            "p99": 2.811958659993252
+          },
+          "overheadP50": 0.0795397251221448,
+          "overheadP50Ci": {
+            "low": 0.07159325969274997,
+            "high": 0.08563402829422424
+          },
+          "overheadP95": 0.06737480841357701,
+          "overheadP95Ci": {
+            "low": 0.037742308739515736,
+            "high": 0.09718000696645511
+          },
+          "deltaP50Ms": 0.15641650001634844,
+          "blocks": [
+            0.07743604050777453,
+            0.079385655874598,
+            0.07243623984508996,
+            0.07111454723971944
+          ]
+        }
+      },
+      {
+        "name": "GET admin/products (50)",
+        "statuses": {
+          "rls": {
+            "200": 600
+          },
+          "plain": {
+            "200": 600
+          }
+        },
+        "bytesEqual": true,
+        "latency": {
+          "rls": {
+            "n": 600,
+            "mean": 7.289576624999512,
+            "p50": 7.2778125000040745,
+            "p95": 8.096222299996588,
+            "p99": 9.125476670015777
+          },
+          "plain": {
+            "n": 600,
+            "mean": 6.73136453166735,
+            "p50": 6.741437499993481,
+            "p95": 7.5631624999863565,
+            "p99": 7.887609079999383
+          },
+          "overheadP50": 0.07956389123404506,
+          "overheadP50Ci": {
+            "low": 0.07063056517304615,
+            "high": 0.0889222967522973
+          },
+          "overheadP95": 0.07048107190757746,
+          "overheadP95Ci": {
+            "low": 0.05220179253324086,
+            "high": 0.08810382884345352
+          },
+          "deltaP50Ms": 0.5363750000105938,
+          "blocks": [
+            0.08047502718436395,
+            0.08163152495018444,
+            0.08607502850149595,
+            0.07508160736553293
+          ]
+        }
+      }
+    ]
+  },
+  "environment": {
+    "cpu": "Apple M1",
+    "cores": 8,
+    "memoryGb": 8,
+    "node": "v26.7.0",
+    "postgres": "PostgreSQL 16.14 (Homebrew) on aarch64-apple-darwin25.6.0",
+    "loadBefore": [
+      3.39501953125,
+      3.18212890625,
+      4.939453125
+    ],
+    "loadAfter": [
+      3.1826171875,
+      3.1875,
+      4.47412109375
+    ]
+  }
+}

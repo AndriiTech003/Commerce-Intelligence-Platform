@@ -1,0 +1,2589 @@
+{
+  "data": [
+    {
+      "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+      "spans": [
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "0380658de0d4353b",
+          "operationName": "multi",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605741000,
+          "duration": 478,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-ioredis"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.70.0"
+            },
+            {
+              "key": "db.operation.name",
+              "type": "string",
+              "value": "multi"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "multi"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "redis"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 6379
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "b0210dd546fa0650",
+          "operationName": "incr",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605741000,
+          "duration": 397,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-ioredis"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.70.0"
+            },
+            {
+              "key": "db.operation.name",
+              "type": "string",
+              "value": "MULTI incr"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "incr smokemuuhklv79b10:rl:sf:127.0.0.1:29852643"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "redis"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 6379
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "b9d2c5be0c459636",
+          "operationName": "expire",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605741000,
+          "duration": 378,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-ioredis"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.70.0"
+            },
+            {
+              "key": "db.operation.name",
+              "type": "string",
+              "value": "MULTI expire"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "expire smokemuuhklv79b10:rl:sf:127.0.0.1:29852643 61"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "redis"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 6379
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "fc4b3adc8cd13934",
+          "operationName": "exec",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605741000,
+          "duration": 381,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-ioredis"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.70.0"
+            },
+            {
+              "key": "db.operation.name",
+              "type": "string",
+              "value": "exec"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "exec"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "redis"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 6379
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "75352e4634693376",
+          "operationName": "set",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605742000,
+          "duration": 299,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-ioredis"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.70.0"
+            },
+            {
+              "key": "db.operation.name",
+              "type": "string",
+              "value": "PIPELINE set"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "set smokemuuhklv79b10:idem:01a1095e-fcf4-76b1-947e-bea0d48877fc:26ee545cf470656b7f23cad5f3bdcdde20f50cfbfff663e5fcb3350e9e706135 [4 other arguments]"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "redis"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 6379
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "8a8b89771a307e88",
+          "operationName": "get",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605743000,
+          "duration": 220,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-ioredis"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.70.0"
+            },
+            {
+              "key": "db.operation.name",
+              "type": "string",
+              "value": "PIPELINE get"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "get smokemuuhklv79b10:attr:01a1095e-fcf4-76b1-947e-bea0d48877fc:847ff9e9-cfe5-440c-a74b-4fd2f3e6854c"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "redis"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 6379
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "8ffdb7f83bad5989",
+          "operationName": "set",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605772000,
+          "duration": 125,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-ioredis"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.70.0"
+            },
+            {
+              "key": "db.operation.name",
+              "type": "string",
+              "value": "PIPELINE set"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "set smokemuuhklv79b10:idem:01a1095e-fcf4-76b1-947e-bea0d48877fc:26ee545cf470656b7f23cad5f3bdcdde20f50cfbfff663e5fcb3350e9e706135 [3 other arguments]"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "redis"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 6379
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "88404d7040e28816",
+          "operationName": "get",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "6e4c878c4ea0b7f0"
+            }
+          ],
+          "startTime": 1791158605780000,
+          "duration": 713,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-ioredis"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.70.0"
+            },
+            {
+              "key": "db.operation.name",
+              "type": "string",
+              "value": "PIPELINE get"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "get smokemuuhklv79b10:attr:01a1095e-fcf4-76b1-947e-bea0d48877fc:847ff9e9-cfe5-440c-a74b-4fd2f3e6854c"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "redis"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 6379
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "637dfea8b7568523",
+          "operationName": "pg-pool.connect",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605744000,
+          "duration": 86,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.postgresql.idle.timeout.millis",
+              "type": "int64",
+              "value": 10000
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "9b5e329025245a82",
+          "operationName": "pg.query:BEGIN cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605744000,
+          "duration": 248,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "begin"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "5a81e1dec9746937",
+          "operationName": "pg.query:SELECT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605744000,
+          "duration": 337,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "select set_config('app.tenant_id', $1, true)"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "e460d53aba985d43",
+          "operationName": "pg.query:SELECT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605745000,
+          "duration": 1493,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "select \"id\", \"tenant_id\", \"number\", \"customer_id\", \"email\", \"status\", \"currency\", \"subtotal_cents\", \"discount_cents\", \"shipping_cents\", \"total_cents\", \"discount_code\", \"shipping_address\", \"idempotency_key\", \"attribution\", \"profile_id\", \"placed_at\" from \"orders\" where \"orders\".\"idempotency_key\" = $1 limit $2"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "d568740299f68afe",
+          "operationName": "pg.query:SELECT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605746000,
+          "duration": 400,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "select \"id\", \"customer_id\", \"anonymous_id\", \"discount_code\" from \"carts\" where (\"carts\".\"anonymous_id\" = $1 and \"carts\".\"status\" = $2) limit $3 for update"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "8e4957571894fbb8",
+          "operationName": "pg.query:SELECT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605747000,
+          "duration": 416,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "select \"id\", \"slug\", \"name\", \"status\", \"settings\", \"created_at\" from \"tenants\" where \"tenants\".\"id\" = $1 limit $2"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "850e1be9c2919954",
+          "operationName": "pg.query:SELECT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605748000,
+          "duration": 1348,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "\n      select ci.variant_id, ci.quantity, ci.added_price_cents, v.product_id, v.title as variant_title, v.sku, v.price_cents, v.currency,\n        p.title as product_title, p.slug as product_slug, p.status as product_status, c.path::text as category_path,\n        coalesce(i.on_hand, 0) as on_hand, coalesce(i.reserved, 0) as reserved,\n        (select pi.storage_key from product_images pi where pi.product_id = p.id order by pi.position limit 1) as image_key\n      from cart_items ci\n        join product_variants v on v.id = ci.variant_id\n        join products p on p.id = v.product_id\n        left join categories c on c.id = p.category_id\n        left join inventory_items i on i.variant_id = v.id\n      where ci.cart_id = $1\n      order by ci.added_at, ci.variant_id"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "ea8cf9baf3b482d7",
+          "operationName": "pg.query:UPDATE cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605750000,
+          "duration": 449,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "update \"inventory_items\" set \"reserved\" = \"inventory_items\".\"reserved\" + $1 where (\"inventory_items\".\"variant_id\" = $2 and \"inventory_items\".\"on_hand\" - \"inventory_items\".\"reserved\" >= $3) returning \"variant_id\""
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "a596571580d5e9d9",
+          "operationName": "pg.query:INSERT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605750000,
+          "duration": 656,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "insert into \"inventory_reservations\" (\"id\", \"tenant_id\", \"order_id\", \"variant_id\", \"quantity\", \"status\", \"expires_at\") values ($1, $2, $3, $4, $5, $6, $7)"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "6faedad8f1f48006",
+          "operationName": "pg.query:INSERT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605751000,
+          "duration": 700,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "insert into \"tenant_counters\" (\"tenant_id\", \"name\", \"value\") values ($1, $2, $3) on conflict (\"tenant_id\",\"name\") do update set \"value\" = \"tenant_counters\".\"value\" + 1 returning \"value\""
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "6a5063f08101840e",
+          "operationName": "pg.query:INSERT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605753000,
+          "duration": 4563,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "insert into \"orders\" (\"id\", \"tenant_id\", \"number\", \"customer_id\", \"email\", \"status\", \"currency\", \"subtotal_cents\", \"discount_cents\", \"shipping_cents\", \"total_cents\", \"discount_code\", \"shipping_address\", \"idempotency_key\", \"attribution\", \"profile_id\", \"placed_at\") values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "a17b6cf247920dd3",
+          "operationName": "pg.query:INSERT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605758000,
+          "duration": 995,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "insert into \"order_items\" (\"id\", \"tenant_id\", \"order_id\", \"variant_id\", \"product_id\", \"title_snapshot\", \"sku_snapshot\", \"unit_price_cents\", \"quantity\") values ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "cd4f87b1b8d8e66e",
+          "operationName": "pg.query:INSERT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605759000,
+          "duration": 857,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "insert into \"order_status_history\" (\"id\", \"tenant_id\", \"order_id\", \"from_status\", \"to_status\", \"reason\", \"actor_id\", \"created_at\") values ($1, $2, $3, $4, $5, $6, $7, default)"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "233b146f7ae96420",
+          "operationName": "pg.query:INSERT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605761000,
+          "duration": 4948,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "insert into \"outbox\" (\"id\", \"tenant_id\", \"aggregate_type\", \"aggregate_id\", \"event_type\", \"payload\", \"headers\", \"created_at\", \"published_at\", \"attempts\", \"last_error\") values ($1, $2, $3, $4, $5, $6, $7, default, default, default, default)"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "ca3bbd0fba64acd8",
+          "operationName": "pg.query:UPDATE cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605766000,
+          "duration": 664,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "update \"carts\" set \"status\" = $1, \"updated_at\" = $2 where \"carts\".\"id\" = $3"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "55741229b067be2b",
+          "operationName": "pg.query:COMMIT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605767000,
+          "duration": 404,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "commit"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "9171404cddeed5fc",
+          "operationName": "pg-pool.connect",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605768000,
+          "duration": 81,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.postgresql.idle.timeout.millis",
+              "type": "int64",
+              "value": 10000
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "d0b5c06c1531fd43",
+          "operationName": "pg.query:BEGIN cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605768000,
+          "duration": 197,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "begin"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "e554271297e4e58f",
+          "operationName": "pg.query:SELECT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605768000,
+          "duration": 271,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "select set_config('app.tenant_id', $1, true)"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "a2c299a04b5a5272",
+          "operationName": "pg.query:SELECT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605768000,
+          "duration": 2367,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "select \"id\", \"tenant_id\", \"order_id\", \"provider\", \"provider_ref\", \"client_secret\", \"status\", \"amount_cents\", \"created_at\" from \"payments\" where \"payments\".\"order_id\" = $1 order by \"payments\".\"created_at\" desc limit $2"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "0a02ef3eddc501b9",
+          "operationName": "pg.query:COMMIT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605771000,
+          "duration": 137,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "commit"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "b5f290a4586d72ff",
+          "operationName": "pg-pool.connect",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605771000,
+          "duration": 27,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.postgresql.idle.timeout.millis",
+              "type": "int64",
+              "value": 10000
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "51f16baf054fb228",
+          "operationName": "pg.query:BEGIN cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605771000,
+          "duration": 101,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "begin"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "91091e338ce0fe01",
+          "operationName": "pg.query:SELECT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605771000,
+          "duration": 163,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "select set_config('app.tenant_id', $1, true)"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "ce11d6ac8998faaf",
+          "operationName": "pg.query:INSERT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605772000,
+          "duration": 484,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "insert into \"payments\" (\"id\", \"tenant_id\", \"order_id\", \"provider\", \"provider_ref\", \"client_secret\", \"status\", \"amount_cents\", \"created_at\") values ($1, $2, $3, $4, $5, $6, $7, $8, default)"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": [
+            "clock skew adjustment disabled; not applying calculated delta of -16.015646ms",
+            "clock skew adjustment disabled; not applying calculated delta of -16.015646ms"
+          ]
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "234ea7708f7d53f3",
+          "operationName": "pg.query:COMMIT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605772000,
+          "duration": 217,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "commit"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "ebb8c4622f4db7cb",
+          "operationName": "POST /v1/storefront/checkout",
+          "references": [],
+          "startTime": 1791158605740000,
+          "duration": 32453,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "cip"
+            },
+            {
+              "key": "http.response.status_code",
+              "type": "int64",
+              "value": 201
+            },
+            {
+              "key": "http.route",
+              "type": "string",
+              "value": "/v1/storefront/checkout"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "server"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "6e4c878c4ea0b7f0",
+          "operationName": "consume q.bandit.feedback",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "02af46cc6b0cdce2"
+            }
+          ],
+          "startTime": 1791158605780000,
+          "duration": 1139,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "cip"
+            },
+            {
+              "key": "cip.retry_count",
+              "type": "int64",
+              "value": 0
+            },
+            {
+              "key": "messaging.destination.name",
+              "type": "string",
+              "value": "q.bandit.feedback"
+            },
+            {
+              "key": "messaging.message.id",
+              "type": "string",
+              "value": "01a1095f-57c0-765c-ae62-c524741ae00f"
+            },
+            {
+              "key": "messaging.rabbitmq.destination.routing_key",
+              "type": "string",
+              "value": "order.placed"
+            },
+            {
+              "key": "messaging.system",
+              "type": "string",
+              "value": "rabbitmq"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "consumer"
+            },
+            {
+              "key": "otel.status_code",
+              "type": "string",
+              "value": "OK"
+            }
+          ],
+          "logs": [],
+          "processID": "p1",
+          "warnings": [
+            "clock skew adjustment disabled; not applying calculated delta of -6.304272ms",
+            "clock skew adjustment disabled; not applying calculated delta of -6.304272ms"
+          ]
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "02af46cc6b0cdce2",
+          "operationName": "publish order.placed",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "ebb8c4622f4db7cb"
+            }
+          ],
+          "startTime": 1791158605769000,
+          "duration": 10530,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "cip"
+            },
+            {
+              "key": "cip.outbox_id",
+              "type": "string",
+              "value": "01a1095f-57c0-765c-ae62-c524741ae00f"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "producer"
+            },
+            {
+              "key": "otel.status_code",
+              "type": "string",
+              "value": "OK"
+            }
+          ],
+          "logs": [],
+          "processID": "p2",
+          "warnings": [
+            "clock skew adjustment disabled; not applying calculated delta of -18.038792ms",
+            "clock skew adjustment disabled; not applying calculated delta of -18.038792ms"
+          ]
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "d15f71125d6927d1",
+          "operationName": "consume q.notifications",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "02af46cc6b0cdce2"
+            }
+          ],
+          "startTime": 1791158605780000,
+          "duration": 1954,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "cip"
+            },
+            {
+              "key": "cip.retry_count",
+              "type": "int64",
+              "value": 0
+            },
+            {
+              "key": "messaging.destination.name",
+              "type": "string",
+              "value": "q.notifications"
+            },
+            {
+              "key": "messaging.message.id",
+              "type": "string",
+              "value": "01a1095f-57c0-765c-ae62-c524741ae00f"
+            },
+            {
+              "key": "messaging.rabbitmq.destination.routing_key",
+              "type": "string",
+              "value": "order.placed"
+            },
+            {
+              "key": "messaging.system",
+              "type": "string",
+              "value": "rabbitmq"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "consumer"
+            },
+            {
+              "key": "otel.status_code",
+              "type": "string",
+              "value": "OK"
+            }
+          ],
+          "logs": [],
+          "processID": "p2",
+          "warnings": [
+            "clock skew adjustment disabled; not applying calculated delta of -6.711792ms",
+            "clock skew adjustment disabled; not applying calculated delta of -6.711792ms"
+          ]
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "707667ac9a90160e",
+          "operationName": "pg-pool.connect",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "d15f71125d6927d1"
+            }
+          ],
+          "startTime": 1791158605780000,
+          "duration": 50,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.postgresql.idle.timeout.millis",
+              "type": "int64",
+              "value": 10000
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p2",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "e7c9db82c154e777",
+          "operationName": "pg.query:BEGIN cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "d15f71125d6927d1"
+            }
+          ],
+          "startTime": 1791158605780000,
+          "duration": 305,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "BEGIN"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p2",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "0b88f09bcf2704fa",
+          "operationName": "pg.query:INSERT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "d15f71125d6927d1"
+            }
+          ],
+          "startTime": 1791158605780000,
+          "duration": 675,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "insert into processed_messages (consumer, message_id) values ($1, $2) on conflict do nothing returning message_id"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p2",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "ec5bded151f0cba6",
+          "operationName": "pg.query:COMMIT cip_test_smoke_muuhklv79b10",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "d15f71125d6927d1"
+            }
+          ],
+          "startTime": 1791158605781000,
+          "duration": 416,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-pg"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.74.0"
+            },
+            {
+              "key": "db.namespace",
+              "type": "string",
+              "value": "cip_test_smoke_muuhklv79b10"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "COMMIT"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "postgresql"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 5432
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p2",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "e0249b19b2ec0bd6",
+          "operationName": "set",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "5280a32b4149f81a"
+            }
+          ],
+          "startTime": 1791158605780000,
+          "duration": 355,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "@opentelemetry/instrumentation-ioredis"
+            },
+            {
+              "key": "otel.scope.version",
+              "type": "string",
+              "value": "0.70.0"
+            },
+            {
+              "key": "db.operation.name",
+              "type": "string",
+              "value": "set"
+            },
+            {
+              "key": "db.query.text",
+              "type": "string",
+              "value": "set smokemuuhklv79b10:dedup:cooc:01a1095f-57c0-765c-ae62-c524741ae00f [4 other arguments]"
+            },
+            {
+              "key": "db.system.name",
+              "type": "string",
+              "value": "redis"
+            },
+            {
+              "key": "server.address",
+              "type": "string",
+              "value": "127.0.0.1"
+            },
+            {
+              "key": "server.port",
+              "type": "int64",
+              "value": 6379
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "client"
+            }
+          ],
+          "logs": [],
+          "processID": "p3",
+          "warnings": null
+        },
+        {
+          "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+          "spanID": "5280a32b4149f81a",
+          "operationName": "consume q.reco.cooccurrence",
+          "references": [
+            {
+              "refType": "CHILD_OF",
+              "traceID": "46b7a035d48d0781b6fec4117d022bc6",
+              "spanID": "02af46cc6b0cdce2"
+            }
+          ],
+          "startTime": 1791158605780000,
+          "duration": 847,
+          "tags": [
+            {
+              "key": "otel.scope.name",
+              "type": "string",
+              "value": "cip"
+            },
+            {
+              "key": "cip.retry_count",
+              "type": "int64",
+              "value": 0
+            },
+            {
+              "key": "messaging.destination.name",
+              "type": "string",
+              "value": "q.reco.cooccurrence"
+            },
+            {
+              "key": "messaging.message.id",
+              "type": "string",
+              "value": "01a1095f-57c0-765c-ae62-c524741ae00f"
+            },
+            {
+              "key": "messaging.rabbitmq.destination.routing_key",
+              "type": "string",
+              "value": "order.placed"
+            },
+            {
+              "key": "messaging.system",
+              "type": "string",
+              "value": "rabbitmq"
+            },
+            {
+              "key": "span.kind",
+              "type": "string",
+              "value": "consumer"
+            },
+            {
+              "key": "otel.status_code",
+              "type": "string",
+              "value": "OK"
+            }
+          ],
+          "logs": [],
+          "processID": "p3",
+          "warnings": [
+            "clock skew adjustment disabled; not applying calculated delta of -6.158397ms",
+            "clock skew adjustment disabled; not applying calculated delta of -6.158397ms"
+          ]
+        }
+      ],
+      "processes": {
+        "p1": {
+          "serviceName": "api",
+          "tags": []
+        },
+        "p2": {
+          "serviceName": "domain-worker",
+          "tags": []
+        },
+        "p3": {
+          "serviceName": "stream-worker",
+          "tags": []
+        }
+      },
+      "warnings": null
+    }
+  ]
+}

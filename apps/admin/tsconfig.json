@@ -1,0 +1,8 @@
+{
+  "extends": "@cip/config/tsconfig.next.json",
+  "compilerOptions": {
+    "paths": { "@/*": ["./src/*"] }
+  },
+  "include": ["next-env.d.ts", "src", "test", "*.config.ts", "*.config.mjs", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

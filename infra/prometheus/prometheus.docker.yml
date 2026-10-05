@@ -1,0 +1,33 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 15s
+
+rule_files:
+  - /etc/prometheus/rules/*.yml
+
+scrape_configs:
+  - job_name: cip-dev
+    metrics_path: /metrics
+    honor_labels: true
+    static_configs:
+      - labels: { profile: dev, service: api }
+        targets: ['api:4100']
+      - labels: { profile: dev, service: collector }
+        targets: ['collector:4110']
+      - labels: { profile: dev, service: realtime-gateway }
+        targets: ['realtime-gateway:4120']
+      - labels: { profile: dev, service: stream-worker }
+        targets: ['stream-worker:4150']
+      - labels: { profile: dev, service: domain-worker }
+        targets: ['domain-worker:4151']
+  - job_name: rabbitmq
+    metrics_path: /metrics/per-object
+    static_configs:
+      - labels: { service: rabbitmq }
+        targets: ['rabbitmq:15692']
+  - job_name: datastores
+    metrics_path: /metrics
+    scrape_interval: 15s
+    static_configs:
+      - labels: { service: datastores }
+        targets: ['datastore-exporter:4196']

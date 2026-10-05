@@ -1,0 +1,42 @@
+service:
+  extensions: [jaeger_storage, jaeger_query]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [jaeger_storage_exporter]
+  telemetry:
+    metrics:
+      level: none
+    logs:
+      level: warn
+
+extensions:
+  jaeger_query:
+    storage:
+      traces: memstore
+    http:
+      endpoint: ${env:JAEGER_BIND:-127.0.0.1}:4193
+    grpc:
+      endpoint: ${env:JAEGER_BIND:-127.0.0.1}:4198
+
+  jaeger_storage:
+    backends:
+      memstore:
+        memory:
+          max_traces: 50000
+
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: ${env:JAEGER_BIND:-127.0.0.1}:4194
+      grpc:
+        endpoint: ${env:JAEGER_BIND:-127.0.0.1}:4195
+
+processors:
+  batch:
+
+exporters:
+  jaeger_storage_exporter:
+    trace_storage: memstore
